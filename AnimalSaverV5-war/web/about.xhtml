@@ -1,5 +1,10 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
@@ -8,19 +13,18 @@
             <ui:include src="template/common/commonHeader.xhtml" />
         </ui:insert>
     </h:head>
-    <h:body>
-        <!--Navbar-->
+    <h:body class="container-fluid">
         <ui:insert name="header" >
             <ui:include src="template/common/commonNavbar.xhtml" />
         </ui:insert>
+        <div>#{aboutController.pageTitle}</div>
+        
         <header>
-            <h1>Welcome to Indigenous Animal Imaging Database</h1>
+            <h1>About us</h1>
         </header>
         <hr />
         <ui:insert name="header" >
             <ui:include src="template/common/commonFooter.xhtml" />
         </ui:insert>
-<h:outputLink value="admin/index.xhtml">Access Administration</h:outputLink> 
     </h:body>
 </html>
-
