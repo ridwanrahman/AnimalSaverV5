@@ -23,13 +23,15 @@ public class JPAUserRepositoryImpl implements UserRepository{
 
     @Override
     public void addUsers(Users user) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Users> users = entityManager.createNamedQuery("Users.findAll").getResultList();
+        int i=users.size() + 1;
+        Long l= new Long(i);
+        user.setId(l);
+        entityManager.persist(user);
     }
 
     @Override
     public List<Users> getAllUsers() throws Exception {
-        System.out.println("herer");
-        System.out.println(entityManager.createNamedQuery("Users.findAll").getResultList());
         return entityManager.createNamedQuery("Users.findAll").getResultList();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -43,7 +45,4 @@ public class JPAUserRepositoryImpl implements UserRepository{
     public void removeUsers(int id) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
-    
 }

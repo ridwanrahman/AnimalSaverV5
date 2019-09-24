@@ -8,16 +8,20 @@ package AnimalSaverV5.mbeans;
 import com.AnimalSaverV5.repository.UserRepository;
 import com.AnimalSaverV5.repository.entities.Users;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
+
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
 
 /**
  *
  * @author ridwanurrahman
  */
-@Named(value = "userManagedBean")
+@ManagedBean(name = "userManagedBean", eager = true)
 @SessionScoped
 public class UserManagedBean implements Serializable {
     
@@ -39,4 +43,12 @@ public class UserManagedBean implements Serializable {
         return null;
     }
     
+    public void addUser(Users user) {
+        System.out.println("user");
+        try{
+            userRepository.addUsers(user);
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+    }
 }

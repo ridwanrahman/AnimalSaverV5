@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"      
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Add staff</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <ui:insert name="header" >
+            <ui:include src="template/common/commonHeader.xhtml" />
+        </ui:insert>
+    </h:head>
+    <h:body>
+        <!--Navbar-->
+        <ui:insert name="header" >
+            <ui:include src="template/common/commonNavbar.xhtml" />
+        </ui:insert>
+        <div>
+            <h:form>
+                <h3>Add a new staff member</h3>
+                <h:panelGrid columns="3">
+                    <h:outputLabel for="username">User Name:</h:outputLabel>
+                    <h:inputText value="#{addStaffBean.userName}" id="name"></h:inputText>
+                    <h:message for="username" />
+                    
+                    <h:outputLabel for="password">Password</h:outputLabel>
+                    <h:inputText value="#{addStaffBean.password}" id="password"></h:inputText>
+                    <h:message for="password" />
+                    
+                    <h:outputLabel for="usertype">User type</h:outputLabel>
+                    <h:inputText value="#{addStaffBean.userType}" id="usertype"></h:inputText>
+                    <h:message for="usertype" />
+                    
+                    <h:commandButton id="register" value="Register" action="#{addStaffBean.confirmation()}"></h:commandButton>
+                </h:panelGrid>
+            </h:form>
+        </div>
+    </h:body>
+</html>
