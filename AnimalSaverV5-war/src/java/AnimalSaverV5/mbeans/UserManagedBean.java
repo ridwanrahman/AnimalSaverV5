@@ -51,4 +51,21 @@ public class UserManagedBean implements Serializable {
             System.out.println(e);
         }
     }
+    public void editUser(Users user) {
+        try {
+            System.out.println(user);
+            userRepository.editUsers(user);
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    public void removeUser(int id) {
+        try {
+//            Long l= new Long(id);
+            userRepository.removeUsers(id);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 }

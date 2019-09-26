@@ -37,12 +37,26 @@ public class JPAUserRepositoryImpl implements UserRepository{
     }
 
     @Override
-    public Users searchUsersById(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Users searchUsersById(long id) throws Exception {
+        Users user = entityManager.find(Users.class, id);
+        return user;
+        
     }
 
     @Override
     public void removeUsers(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Users user = this.searchUsersById(id);
+        if(user != null) {
+            entityManager.remove(user);
+        }
+    }
+
+    @Override
+    public void editUsers(Users user) throws Exception {
+        try {
+            entityManager.merge(user);
+        } catch(Exception e) {
+            System.out.println(e);
+        }
     }
 }

@@ -18,7 +18,8 @@ public interface UserRepository {
     
     public void addUsers(Users user) throws Exception;
     public List<Users> getAllUsers() throws Exception;
-    public Users searchUsersById(int id) throws Exception;
+    public Users searchUsersById(long id) throws Exception;
     public void removeUsers(int id) throws Exception;
+    public void editUsers(Users user) throws Exception;
     
 }

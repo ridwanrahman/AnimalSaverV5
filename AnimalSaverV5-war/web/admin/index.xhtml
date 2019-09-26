@@ -57,8 +57,8 @@ and open the template in the editor.
                                 <h:commandLink value="Edit | " action="editUser.xhtml">
                                     <f:param name="userId" value="#{status.index + 1}"/>
                                 </h:commandLink>
-                                <h:commandLink value="Delete | " action="deleteUser.xhtml">
-                                    <f:param name="userId" value="#{status.index + 1}"/>
+                                <h:commandLink value="Delete | " action="#{removeUser.removeUser(status.index + 1)}">
+                                    <f:param name="userId" value=""/>
                                 </h:commandLink>
                             </td>
                         </tr>
