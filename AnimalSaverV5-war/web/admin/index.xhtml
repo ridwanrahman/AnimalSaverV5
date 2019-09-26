@@ -50,6 +50,17 @@ and open the template in the editor.
                             <td>
                                 <h:outputText value="#{user.usertype}" id="usertype" />
                             </td>
+                            <td>
+                                <h:commandLink value="View | " action="viewUser.xhtml">
+                                    <f:param name="userId" value="#{status.index+1}"/>
+                                </h:commandLink>
+                                <h:commandLink value="Edit | " action="editUser.xhtml">
+                                    <f:param name="userId" value="#{status.index + 1}"/>
+                                </h:commandLink>
+                                <h:commandLink value="Delete | " action="deleteUser.xhtml">
+                                    <f:param name="userId" value="#{status.index + 1}"/>
+                                </h:commandLink>
+                            </td>
                         </tr>
                     </ui:repeat>
                 </table>
