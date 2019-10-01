@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.validation.constraints.Size;
@@ -35,11 +36,12 @@ public class Animal implements Serializable{
     private String animalImage;
     private String wikiLink;
     private AnimalLocation location;
+    private AnimalFamily animalFamily;
 
     public Animal() {
     }
 
-    public Animal(int animalId, String animalName, String animalDesc, String animalColor, String animalImage, String wikiLink, AnimalLocation location) {
+    public Animal(int animalId, String animalName, String animalDesc, String animalColor, String animalImage, String wikiLink, AnimalLocation location, AnimalFamily family) {
         this.animalId = animalId;
         this.animalName = animalName;
         this.animalDesc = animalDesc;
@@ -47,7 +49,8 @@ public class Animal implements Serializable{
         this.animalImage = animalImage;
         this.wikiLink = wikiLink;
         this.location = location;
-    }
+        this.animalFamily = family;
+    }    
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -111,5 +114,12 @@ public class Animal implements Serializable{
         this.location = location;
     }
     
+    @ManyToOne
+    public AnimalFamily getAnimalFamily() {
+        return animalFamily;
+    }
 
+    public void setAnimalFamily(AnimalFamily family) {
+        this.animalFamily = family;
+    }
 }

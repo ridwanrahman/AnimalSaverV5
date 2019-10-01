@@ -35,7 +35,7 @@ public class AnimalFamily implements Serializable{
     private String animalFamilyName;
     private String animalFamilyDesc;
     
-    private Set<Animal1> animals;
+    private Set<Animal> animals;
 
     public AnimalFamily() {
     }
@@ -75,12 +75,12 @@ public class AnimalFamily implements Serializable{
         this.animalFamilyDesc = animalFamilyDesc;
     }
 
-    @OneToMany(mappedBy = "family")    
-    public Set<Animal1> getAnimals() {
+    @OneToMany(mappedBy = "animalFamily")    
+    public Set<Animal> getAnimals() {
         return animals;
     }
 
-    public void setAnimals(Set<Animal1> animals) {
+    public void setAnimals(Set<Animal> animals) {
         this.animals = animals;
     }
 
