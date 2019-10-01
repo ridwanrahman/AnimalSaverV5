@@ -5,10 +5,19 @@
  */
 package com.AnimalSaverV5.repository;
 
+import com.AnimalSaverV5.repository.entities.Animal;
+import javax.ejb.Remote;
+
 /**
  *
  * @author ridwanurrahman
  */
-public class NewClass {
+@Remote
+public interface AnimalRepository {
+    
+    public void addAnimal(Animal animal) throws Exception;
+    
+    
+    
     
 }

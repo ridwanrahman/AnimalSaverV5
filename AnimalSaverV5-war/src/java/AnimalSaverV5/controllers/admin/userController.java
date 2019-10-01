@@ -14,6 +14,7 @@ import javax.faces.bean.ManagedProperty;
 
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -52,5 +53,11 @@ public class userController implements Serializable{
     public com.AnimalSaverV5.repository.entities.Users getUser() throws Exception{
         int id = userId-1;
         return userManagedBean.getAllUsers().get(id);
+    }
+    
+    public void logout() throws Exception {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession)fc.getExternalContext().getSession(false);
+        session.invalidate();
     }
 }
