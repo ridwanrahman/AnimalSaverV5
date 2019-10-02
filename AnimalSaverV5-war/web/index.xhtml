@@ -17,6 +17,35 @@
             <h1>Welcome to Indigenous Animal Imaging Database</h1>
         </header>
         <hr />
+        
+        <!--Main table -->
+        <h:form id="MyForm">
+            <table class="table table-bordered table-striped">
+                <tr>
+                            <td> 
+                                <h:outputLabel id="Id" value="Id"  />
+                            </td>
+                            <td> 
+                                <h:outputLabel id="AnimalName" value="AnimalName"  />
+                            </td>
+          
+                            <td> 
+                                <h:outputLabel id="Address" value="Address"/>
+                            </td>
+                            
+                     </tr>
+                <ui:repeat id="Myrepeat" value="#{animalApplication.animals}" var="animal" varStatus="status">
+                    <tr onclick="document.getElementById('MyForm:principle').value = document.getElementById('MyForm:Myrepeat:#{status.index}:outPrice').textContent"> 
+                        <td>
+                            <h:outputText value="#{animalApplication.animals.get(status.index).animalId}" id="animalId" /> 
+                        </td>
+                    </tr>
+                </ui:repeat>
+            </table>            
+            
+        </h:form>
+        
+        
         <ui:insert name="header" >
             <ui:include src="template/common/commonFooter.xhtml" />
         </ui:insert>
