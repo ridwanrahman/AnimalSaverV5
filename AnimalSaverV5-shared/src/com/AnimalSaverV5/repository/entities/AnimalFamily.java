@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -25,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "ANIMAL_FAMILY")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = AnimalFamily.GET_ALL_QUERY_NAME, query = "SELECT af FROM AnimalFamily af order by af.animalFamilyID")})
+    @NamedQuery(name = AnimalFamily.GET_ALL_QUERY_NAME, query = "SELECT af FROM AnimalFamily af")})
 
 public class AnimalFamily implements Serializable{
     
@@ -48,6 +49,7 @@ public class AnimalFamily implements Serializable{
     }
 
     @Id
+    @GeneratedValue
     @Column(name = "animal_family_ID")
     public int getAnimalFamilyID() {
         return animalFamilyID;

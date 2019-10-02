@@ -6,7 +6,11 @@
 package com.AnimalSaverV5.repository.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,11 +41,14 @@ public class Animal implements Serializable{
     private String wikiLink;
     private AnimalLocation location;
     private AnimalFamily animalFamily;
+    
+    private Set<String> tags;
 
     public Animal() {
+        this.tags = new HashSet<>();
     }
 
-    public Animal(int animalId, String animalName, String animalDesc, String animalColor, String animalImage, String wikiLink, AnimalLocation location, AnimalFamily family) {
+    public Animal(int animalId, String animalName, String animalDesc, String animalColor, String animalImage, String wikiLink, AnimalLocation location, AnimalFamily family, Set<String> tags) {
         this.animalId = animalId;
         this.animalName = animalName;
         this.animalDesc = animalDesc;
@@ -50,6 +57,7 @@ public class Animal implements Serializable{
         this.wikiLink = wikiLink;
         this.location = location;
         this.animalFamily = family;
+        this.tags = tags;
     }    
 
     @Id
@@ -122,4 +130,22 @@ public class Animal implements Serializable{
     public void setAnimalFamily(AnimalFamily family) {
         this.animalFamily = family;
     }
+    
+    @ElementCollection
+    @CollectionTable(name = "tag")
+    @Column(name = "value")
+    public Set<String> getTags() {
+        return tags;
+    }
+    
+    public void setTags(Set<String> tags) {
+        this.tags = tags;
+    }
+
+    @Override
+    public String toString() {
+        return "Animal{" + "animalId=" + animalId + ", animalName=" + animalName + ", animalDesc=" + animalDesc + ", animalColor=" + animalColor + ", animalImage=" + animalImage + ", wikiLink=" + wikiLink + ", location=" + location + ", animalFamily=" + animalFamily + ", tags=" + tags + '}';
+    }
+    
+    
 }

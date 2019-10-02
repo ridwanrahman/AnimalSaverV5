@@ -4,6 +4,7 @@
     <jta-data-source>jdbc/animalsaverv5conn10</jta-data-source>
     <class>com.AnimalSaverV5.repository.entities.Animal</class>
     <class>com.AnimalSaverV5.repository.entities.AnimalFamily</class>
+    <class>com.AnimalSaverV5.repository.entities.Users</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
