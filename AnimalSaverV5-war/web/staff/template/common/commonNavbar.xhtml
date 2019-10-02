@@ -14,22 +14,27 @@ and open the template in the editor.
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#">Administrator</a>
+                        <a class="navbar-brand" href="#">Staff Portal</a>
                     </div>
                     <h:form>
                         <ul class="nav navbar-nav">
                             <li class="">
-                                    <h:commandLink action="#" value="Home">
+                                    <h:commandLink action="index.xhtml" value="Home">
                                     <f:param name="pageId" value="1"/>
                                 </h:commandLink>
                             </li>
                             <li class="">
-                                <h:commandLink action="#" value="Add staff">
+                                <h:commandLink action="addAnimal.xhtml" value="Add Animals">
                                     <f:param name="pageId" value="2"/>
                                 </h:commandLink>
                             </li>
                             <li class="">
-                                <h:commandLink action="#" value="Check contacts">
+                                <h:commandLink action="addAnimalFamily.xhtml" value="Add Animal Family">
+                                    <f:param name="pageId" value="3"/>
+                                </h:commandLink>
+                            </li>
+                            <li class="">
+                                <h:commandLink action="checkContacts.xhtml" value="Check contacts">
                                     <f:param name="pageId" value="3"/>
                                 </h:commandLink>
                             </li>

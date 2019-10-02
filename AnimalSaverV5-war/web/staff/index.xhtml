@@ -5,12 +5,74 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>Staff</title>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"      
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Staff Dashboard</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>This is staff dashboard</div>
-    </body>
+        <ui:insert name="header" >
+            <ui:include src="template/common/commonHeader.xhtml" />
+        </ui:insert>
+    </h:head>
+    <h:body>
+        <!--Navbar-->
+        <ui:insert name="header" >
+            <ui:include src="template/common/commonNavbar.xhtml" />
+        </ui:insert>
+        <h1>Staff Dashboard</h1>
+        <p>Welcome to the secured Staff area.</p>
+        
+        <h:form id="StaffForm">
+            <table class="table table-bordered table-striped" style="width:15px">
+                <tr style="width:2px">
+                    <td> 
+                        <h:outputLabel id="Id" value="Id"  />
+                    </td>
+                    <td> 
+                        <h:outputLabel id="animalname" value="animalname"  />
+                    </td>
+                    <td> 
+                        <h:outputLabel id="AnimalDesc" value="AnimalDesc"/>
+                    </td>                            
+                </tr>
+                <ui:repeat value="#{animalApplication.animals}" id="StaffForm" var="animal" varStatus="status">
+                    <tr>
+                        <td>
+                            <h:outputText value="#{animalApplication.animals.get(status.index).animalId}" id="animalId" />
+                        </td>
+                        <td>
+                            <h:outputText value="#{animalApplication.animals.get(status.index).animalName}" id="AnimalName"></h:outputText>
+                        </td>
+                        <td>
+                            <h:outputText value="#{animalApplication.animals.get(status.index).animalDesc}" id="AnimalDesc"></h:outputText>
+                        </td>
+                        <td>
+                            <h:commandLink value="View" action="#" >
+                                <f:param name="animalId" value="#{status.index + 1}"/>
+                            </h:commandLink>
+                        </td>
+                        <td>
+                            <h:commandLink value="Edit" action="#" >
+                                <f:param name="animalId" value="#{status.index + 1}"/>
+                            </h:commandLink>
+                        </td>
+                        <td>
+                            <h:commandLink value="Delete" action="#" >
+                                <f:param name="animalId" value="#{status.index + 1}"/>
+                            </h:commandLink>
+                        </td>
+                            
+                            
+                    </tr>
+                </ui:repeat>
+            </table>
+        </h:form>
+        <hr></hr>
+        <!--Footer-->
+        <ui:insert name="header" >
+            <ui:include src="template/common/commonFooter.xhtml" />
+        </ui:insert>
+    </h:body>
 </html>
