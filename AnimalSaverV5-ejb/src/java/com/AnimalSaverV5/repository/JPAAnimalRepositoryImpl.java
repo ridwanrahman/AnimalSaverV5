@@ -20,10 +20,19 @@ public class JPAAnimalRepositoryImpl implements AnimalRepository{
     
     @PersistenceContext(unitName = "AnimalSaverV5-ejbPU")
     private EntityManager entityManager;
+    
+    
+//        List<Property> properties =  entityManager.createNamedQuery(Property.GET_ALL_QUERY_NAME).getResultList(); 
+//        property.setPropertyId(properties.get(0).getPropertyId() + 1);
+//        
 
     @Override
     public void addAnimal(Animal animal) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("****saving animal to database****");
+        List<Animal> animals = entityManager.createNamedQuery(Animal.GET_ALL_QUERY_NAME).getResultList();
+        System.out.println(animals.get(0).getAnimalId() + 1);
+        animal.setAnimalId(animals.get(0).getAnimalId() + 1);
+        entityManager.persist(animal);
     }
 
     @Override
@@ -33,7 +42,6 @@ public class JPAAnimalRepositoryImpl implements AnimalRepository{
 
     @Override
     public List<Animal> getAllAnimal() throws Exception {
-        System.out.println("getting all animal");
         return entityManager.createNamedQuery(Animal.GET_ALL_QUERY_NAME).getResultList();
     }
 
@@ -50,7 +58,6 @@ public class JPAAnimalRepositoryImpl implements AnimalRepository{
     @Override
     public void editAnimal(Animal animal) throws Exception {
         try {
-            System.out.println("saving edited animal");
             entityManager.merge(animal);
         } catch(Exception e) {
             System.out.println(e);

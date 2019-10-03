@@ -38,10 +38,63 @@ and open the template in the editor.
                         <td valign="bottom">
                             <h:inputText id = "animalName" value="#{animalController.animal.animalName}" binding="#{animalName}" required="true"></h:inputText>
                         </td>
-                    </tr>                                        
+                    </tr>
+                    <tr>
+                        <td width ="100" valign="top">Animal Color </td>
+                        <td valign="bottom">
+                            <h:inputText id = "animalColor" value="#{animalController.animal.animalColor}" binding="#{animalColor}" required="true"></h:inputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="100" valign="top">Animal Description </td>
+                        <td valign="bottom">
+                            <h:inputText id = "animalDesc" value="#{animalController.animal.animalDesc}" binding="#{animalDesc}" required="true"></h:inputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="100" valign="top">Animal image </td>
+                        <td valign="bottom">
+                            <h:inputText id = "animalImage" value="#{animalController.animal.animalImage}" binding="#{animalImage}" required="true"></h:inputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="100" valign="top">Wikipedia Link</td>
+                        <td valign="bottom">
+                            <h:inputText id = "wikiLink" value="#{animalController.animal.wikiLink}" binding="#{wikiLink}" required="true"></h:inputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="100" valign="top">Postcode</td>
+                        <td valign="bottom">
+                            <h:inputText id = "postcode" value="#{animalController.animal.location.postcode}" binding="#{postcode}" required="true"></h:inputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="100" valign="top">state</td>
+                        <td valign="bottom">
+                            <h:inputText id = "state" value="#{animalController.animal.location.state}" binding="#{state}" required="true"></h:inputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="100" valign="top">street address</td>
+                        <td valign="bottom">
+                            <h:inputText id = "street_address" value="#{animalController.animal.location.streetAddress}" binding="#{streetAddress}" required="true"></h:inputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="100" valign="top">Street Number </td>
+                        <td valign="bottom">
+                            <h:inputText id = "street_number" value="#{animalController.animal.location.streetNumber}" binding="#{streetNumber}" required="true"></h:inputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="100" valign="top">Suburb</td>
+                        <td valign="bottom">
+                            <h:inputText id = "suburb" value="#{animalController.animal.location.suburb}" binding="#{suburb}" required="true"></h:inputText>
+                        </td>
+                    </tr>
                 </table>
                 <h:commandButton id="save" value="Save" action="#{animalManagedBean.editAnimal(animalController.animal)}" class="btn btn-primary">
-                    <!--<f:param name="propertyID" value="#{propertyController.propertyId+1}"/>-->
                     <f:param name="animalId" value="#{animalController.animalId + 1}"></f:param>
                 </h:commandButton>
             </h:form>

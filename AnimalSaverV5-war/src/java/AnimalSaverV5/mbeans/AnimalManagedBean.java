@@ -40,6 +40,35 @@ public class AnimalManagedBean implements Serializable{
         return null;
     }
     
+    public void addAnimal(AnimalSaverV5.controllers.Animal unconvertedAnimal) {
+        System.out.println("in add animal managed bean");
+        Animal animal = convertToAnimal(unconvertedAnimal);
+        System.out.println(animal);
+        System.out.println("saving");
+        try {
+            animalRepository.addAnimal(animal);
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        
+    }
+    private Animal convertToAnimal(AnimalSaverV5.controllers.Animal localAnimal) {
+        Animal animal = new Animal();
+        String street_number = localAnimal.getStreetNumber();
+        String street_address = localAnimal.getStreetAddress();
+        String suburb = localAnimal.getSuburb();
+        String postcode = localAnimal.getPostcode();
+        String state = localAnimal.getState();
+        AnimalLocation location = new AnimalLocation(street_number,street_address,suburb,postcode,state);
+        animal.setLocation(location);
+        animal.setAnimalName(localAnimal.getAnimalName());
+        animal.setAnimalDesc(localAnimal.getAnimalDesc());
+        animal.setAnimalColor(localAnimal.getAnimalColor());
+        animal.setAnimalImage(localAnimal.getAnimalImage());
+        animal.setWikiLink(localAnimal.getWikiLink());
+        return animal;
+    }
+    
     public void editAnimal(Animal animal) {
         try{
             System.out.println("saving edited animal");

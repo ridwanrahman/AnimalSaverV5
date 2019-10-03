@@ -7,7 +7,8 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <ui:insert name="header" >
             <ui:include src="template/common/commonHeader.xhtml" />
@@ -18,9 +19,98 @@ and open the template in the editor.
         <ui:insert name="header" >
             <ui:include src="template/common/commonNavbar.xhtml" />
         </ui:insert>
-        <h1>Add animal page.</h1> 
+        <h1>Add animal page.</h1>
+        
+        <f:view>
+            <h:form>
+                <table class="table table-bordered ">
+                    <tr>
+                        <td width ="200">
+                            <h:outputLabel value="animalName" for="animalName" />
+                        </td>
+                        <td>
+                            <h:inputText id="animalName" value="#{animal.animalName}" title="animalName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="200">
+                            <h:outputLabel value="animalDesc" for="animalDesc" />
+                        </td>
+                        <td>
+                            <h:inputText id="animalDesc" value="#{animal.animalDesc}" title="animalDesc" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="200">
+                            <h:outputLabel value="animalColor" for="animalColor" />
+                        </td>
+                        <td>
+                            <h:inputText id="animalColor" value="#{animal.animalColor}" title="animalColor" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="200">
+                            <h:outputLabel value="animalImage" for="animalImage" />
+                        </td>
+                        <td>
+                            <h:inputText id="animalImage" value="#{animal.animalImage}" title="animalImage" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="200">
+                            <h:outputLabel value="wikiLink" for="wikiLink" />
+                        </td>
+                        <td>
+                            <h:inputText id="wikiLink" value="#{animal.wikiLink}" title="wikiLink" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="200">
+                            <h:outputLabel value="postcode" for="postcode" />
+                        </td>
+                        <td>
+                            <h:inputText id="postcode" value="#{animal.postcode}" title="postcode" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="200">
+                            <h:outputLabel value="state" for="state" />
+                        </td>
+                        <td>
+                            <h:inputText id="state" value="#{animal.state}" title="state" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="200">
+                            <h:outputLabel value="street_number" for="street_number" />
+                        </td>
+                        <td>
+                            <h:inputText id="street_number" value="#{animal.streetNumber}" title="street_number" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="200">
+                            <h:outputLabel value="street_address" for="street_address" />
+                        </td>
+                        <td>
+                            <h:inputText id="street_address" value="#{animal.streetAddress}" title="street_address" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="200">
+                            <h:outputLabel value="suburb" for="suburb" />
+                        </td>
+                        <td>
+                            <h:inputText id="suburb" value="#{animal.suburb}" title="suburb" />
+                        </td>
+                    </tr>
+                </table>                
+                <h:commandButton id="submit" value="Submit" action="#{addAnimal.addAnimal(animal)}">
+                </h:commandButton>
+            </h:form>
+        </f:view>
         <!--Footer-->
-        <ui:insert name="footer" >
+        <ui:insert name="footer">
             <ui:include src="template/common/commonFooter.xhtml" />
         </ui:insert>
     </h:body>
