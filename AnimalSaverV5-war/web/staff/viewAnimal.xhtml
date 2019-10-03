@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"      
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Staff Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <ui:insert name="header" >
+            <ui:include src="template/common/commonHeader.xhtml" />
+        </ui:insert>
+    </h:head>
+    <h:body>
+        <!--Navbar-->
+        <ui:insert name="header" >
+            <ui:include src="template/common/commonNavbar.xhtml" />
+        </ui:insert>
+        <h1>View Animal</h1>
+        <!--main content -->
+        <h:form id="viewForm">
+            <table class="table table-bordered ">
+                <tr>
+                    <td width ="150" valign="top">Name:</td>
+                    <td valign="bottom">
+                        <h:outputLabel id = "aimalName" >#{animalController.animal.animalName}</h:outputLabel>
+                    </td>
+                </tr>
+                <tr>
+                    <td width ="150" valign="top">Description</td>
+                    <td valign="bottom">
+                        <h:outputLabel id = "animalDesc" >#{animalController.animal.animalDesc}</h:outputLabel>
+                    </td>
+                </tr>
+                <tr>
+                    <td width ="150" valign="top">Animal Color</td>
+                    <td valign="bottom">
+                        <h:outputLabel id = "animalColor" >#{animalController.animal.animalColor}</h:outputLabel>
+                    </td>
+                </tr>
+                <tr>
+                    <td width ="150" valign="top">Wikipedia link</td>
+                    <td valign="bottom">
+                        <h:outputLabel id = "wikiLink" >#{animalController.animal.wikiLink}</h:outputLabel>
+                    </td>
+                </tr>
+                <tr>
+                    <td width ="150" valign="top">Animal Family</td>
+                    <td valign="bottom">
+                        <h:outputLabel id = "animalFamily" >#{animalController.animal.animalFamily.animalFamilyDesc}</h:outputLabel>
+                    </td>
+                </tr>
+                <tr>
+                    <td width ="150" valign="top">Address</td>
+                    <td valign="bottom">
+                        <h:outputLabel id = "animalAddrss" >
+                            postcode: #{animalController.animal.location.postcode}
+                            state: #{animalController.animal.location.state}
+                            street address: #{animalController.animal.location.streetAddress}
+                            street number: #{animalController.animal.location.streetNumber}
+                            suburb: #{animalController.animal.location.suburb}
+                        </h:outputLabel>
+                    </td>
+                </tr>
+            </table>
+        </h:form>
+        <!--main content -->
+        <hr></hr>
+        <!--Footer-->
+        <ui:insert name="header" >
+            <ui:include src="template/common/commonFooter.xhtml" />
+        </ui:insert>
+    </h:body>
+</html>

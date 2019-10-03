@@ -49,7 +49,7 @@ and open the template in the editor.
                             <h:outputText value="#{animalApplication.animals.get(status.index).animalDesc}" id="AnimalDesc"></h:outputText>
                         </td>
                         <td>
-                            <h:commandLink value="View" action="#" >
+                            <h:commandLink value="View" action="viewAnimal.xhtml" >
                                 <f:param name="animalId" value="#{status.index + 1}"/>
                             </h:commandLink>
                         </td>
