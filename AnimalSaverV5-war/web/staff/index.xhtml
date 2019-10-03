@@ -59,7 +59,7 @@ and open the template in the editor.
                             </h:commandLink>
                         </td>
                         <td>
-                            <h:commandLink value="Delete" action="#" >
+                            <h:commandLink value="Delete" action="#{removeAnimal.removeAnimal(animalApplication.animals.get(status.index).animalId)}" >
                                 <f:param name="animalId" value="#{status.index + 1}"/>
                             </h:commandLink>
                         </td>

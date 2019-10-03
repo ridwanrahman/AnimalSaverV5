@@ -37,7 +37,11 @@ public class JPAAnimalRepositoryImpl implements AnimalRepository{
 
     @Override
     public Animal searchAnimalById(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Search animal by id");
+        Animal animal = entityManager.find(Animal.class, id);
+        animal.getTags();
+        System.out.println(animal);
+        return animal;
     }
 
     @Override
@@ -52,7 +56,12 @@ public class JPAAnimalRepositoryImpl implements AnimalRepository{
 
     @Override
     public void removeAnimal(int animalId) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Remove animal ejb");
+        Animal animal = this.searchAnimalById(animalId);
+        if(animal != null) {
+            System.out.println("removing animal");
+            entityManager.remove(animal);
+        }
     }
 
     @Override

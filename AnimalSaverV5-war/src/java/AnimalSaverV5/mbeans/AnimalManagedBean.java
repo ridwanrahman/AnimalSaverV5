@@ -31,7 +31,7 @@ public class AnimalManagedBean implements Serializable{
     public AnimalManagedBean() {
     }
     
-    public List<Animal> getAllAnimals() {
+    public List<Animal> getAllAnimals() {        
         try {
             List<Animal> animals = animalRepository.getAllAnimal();
             return animals;
@@ -50,8 +50,16 @@ public class AnimalManagedBean implements Serializable{
         } catch(Exception e) {
             System.out.println(e);
         }
+    }
+    public void removeAnimal(int animalId) {
+        try {
+            animalRepository.removeAnimal(animalId);
+        } catch(Exception e) {
+            System.out.println(e);
+        }
         
     }
+    
     private Animal convertToAnimal(AnimalSaverV5.controllers.Animal localAnimal) {
         Animal animal = new Animal();
         String street_number = localAnimal.getStreetNumber();
