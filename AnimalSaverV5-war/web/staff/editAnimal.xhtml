@@ -9,11 +9,50 @@ and open the template in the editor.
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"      
       xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <head>
-        <title>TODO supply a title</title>
+    <h:head>
+        <title>Staff Dashboard - Edit Animals</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+        <ui:insert name="header" >
+            <ui:include src="template/common/commonHeader.xhtml" />
+        </ui:insert>
+    </h:head>
+    <h:body>
+        <!--Navbar-->
+        <ui:insert name="header" >
+            <ui:include src="template/common/commonNavbar.xhtml" />
+        </ui:insert>
+        <h1>Edit Animal</h1>
+        <!-- Main content-->
+        <div class="container">
+            <h:form id="EditForm">
+                <table class="table table-bordered ">
+                    <tr>
+                        <td width ="150" valign="top">Id:</td>
+                        <td valign="bottom">
+                            <h:outputLabel id = "Id" >#{propertyController.property.propertyId}</h:outputLabel>    
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td width ="100" valign="top">Animal Name </td>
+                        <td valign="bottom">
+                            <h:inputText id = "animalName" value="#{animalController.animal.animalName}" binding="#{animalName}" required="true"></h:inputText>
+                        </td>
+                    </tr>                                        
+                </table>
+                <h:commandButton id="save" value="Save" action="#{animalManagedBean.editAnimal(animalController.animal)}" class="btn btn-primary">
+                    <!--<f:param name="propertyID" value="#{propertyController.propertyId+1}"/>-->
+                    <f:param name="animalId" value="#{animalController.animalId + 1}"></f:param>
+                </h:commandButton>
+            </h:form>
+        </div>
+        
+        
+        <!-- Main content-->
+        <hr></hr>
+        <!--Footer-->
+        <ui:insert name="header" >
+            <ui:include src="template/common/commonFooter.xhtml" />
+        </ui:insert>
+    </h:body>
 </html>

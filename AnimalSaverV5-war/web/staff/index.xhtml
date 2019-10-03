@@ -54,7 +54,7 @@ and open the template in the editor.
                             </h:commandLink>
                         </td>
                         <td>
-                            <h:commandLink value="Edit" action="#" >
+                            <h:commandLink value="Edit" action="editAnimal.xhtml" >
                                 <f:param name="animalId" value="#{status.index + 1}"/>
                             </h:commandLink>
                         </td>
@@ -63,8 +63,6 @@ and open the template in the editor.
                                 <f:param name="animalId" value="#{status.index + 1}"/>
                             </h:commandLink>
                         </td>
-                            
-                            
                     </tr>
                 </ui:repeat>
             </table>

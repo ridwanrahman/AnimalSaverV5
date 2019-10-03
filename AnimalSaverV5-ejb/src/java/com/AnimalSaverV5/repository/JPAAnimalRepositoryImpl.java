@@ -49,7 +49,12 @@ public class JPAAnimalRepositoryImpl implements AnimalRepository{
 
     @Override
     public void editAnimal(Animal animal) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            System.out.println("saving edited animal");
+            entityManager.merge(animal);
+        } catch(Exception e) {
+            System.out.println(e);
+        }
     }
 
     

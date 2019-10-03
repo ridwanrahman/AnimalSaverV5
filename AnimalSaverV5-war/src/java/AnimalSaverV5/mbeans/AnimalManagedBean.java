@@ -8,11 +8,14 @@ package AnimalSaverV5.mbeans;
 
 import com.AnimalSaverV5.repository.AnimalRepository;
 import com.AnimalSaverV5.repository.entities.Animal;
+import com.AnimalSaverV5.repository.entities.AnimalLocation;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -35,5 +38,20 @@ public class AnimalManagedBean implements Serializable{
         } catch(Exception e) {
         }
         return null;
+    }
+    
+    public void editAnimal(Animal animal) {
+        try{
+            System.out.println("saving edited animal");
+            String s = animal.getLocation().getStreetNumber();
+            AnimalLocation animalLocation = animal.getLocation();
+            animalLocation.setStreetNumber(s);
+            animal.setLocation(animalLocation);
+            animalRepository.editAnimal(animal);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Animal has been updated succesfully"));
+        } catch(Exception e) {
+              System.out.println(e);
+        }
+        System.out.println(animal);
     }
 }

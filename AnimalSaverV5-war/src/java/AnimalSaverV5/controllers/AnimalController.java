@@ -36,8 +36,6 @@ public class AnimalController {
                 getExternalContext().
                 getRequestParameterMap()
                 .get("animalId"));
-        System.out.println("I am here");
-        System.out.println(animalId);
         animal = getAnimal();
     }
     
@@ -52,7 +50,4 @@ public class AnimalController {
         }
         return animal;
     }
-    
-    
-    
 }
