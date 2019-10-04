@@ -8,7 +8,8 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <ui:insert name="header" >
             <ui:include src="template/common/commonHeader.xhtml" />
@@ -19,7 +20,7 @@ and open the template in the editor.
         <ui:insert name="header" >
             <ui:include src="template/common/commonNavbar.xhtml" />
         </ui:insert>
-        <h1>Add animal page.</h1>
+        <h1>Add animal.</h1>
         
         <f:view>
             <h:form>
@@ -104,12 +105,36 @@ and open the template in the editor.
                             <h:inputText id="suburb" value="#{animal.suburb}" title="suburb" />
                         </td>
                     </tr>
+                    <tr>
+                        <td width="200">
+                            <h:outputLabel value="Animal Family" for="animalFamily" />
+                        </td>
+                        <td>
+                            
+                            <!-- <h:selectOneMenu value="#{heritage.heritageGroupId}" style="margin: 15px">
+                                    <f:selectItems value="#{heritageGroupMB.heritageGroups}" var="groups" itemLabel="#{groups.groupCategory}-#{groups.groupSubCategory}"
+                                                   itemValue="#{groups.groupId}" />
+                                </h:selectOneMenu>   -->
+                            
+                            
+                            
+                            
+                            <h:selectOneMenu id="animalFamilyID" value="#{animal.animalFamilyID}">
+                                <!-- <f:selectItem itemLabel="Please select a family." itemValue="#{null}"
+                                              noSelectionOption="true" /> -->
+                                <f:selectItems value="#{animalManagedBean.allAnimalFamily}"
+                                               var="c" itemLabel="#{c.animalFamilyID} - #{c.animalFamilyDesc}"
+                                               itemValue="#{c.animalFamilyID}"/>
+                            </h:selectOneMenu>
+                        </td>
+                    </tr>
                 </table>                
-                <h:commandButton id="submit" value="Submit" action="#{addAnimal.addAnimal(animal)}">
+                <h:commandButton id="submit" value="Submit" action="#{addAnimal.addAnimal(animal)}" class="btn btn-primary">
                 </h:commandButton>
             </h:form>
         </f:view>
         <!--Footer-->
+        <hr></hr>
         <ui:insert name="footer">
             <ui:include src="template/common/commonFooter.xhtml" />
         </ui:insert>

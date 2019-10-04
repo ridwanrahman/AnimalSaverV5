@@ -8,6 +8,7 @@ package AnimalSaverV5.mbeans;
 
 import com.AnimalSaverV5.repository.AnimalRepository;
 import com.AnimalSaverV5.repository.entities.Animal;
+import com.AnimalSaverV5.repository.entities.AnimalFamily;
 import com.AnimalSaverV5.repository.entities.AnimalLocation;
 import java.io.Serializable;
 import java.util.List;
@@ -40,8 +41,18 @@ public class AnimalManagedBean implements Serializable{
         return null;
     }
     
+    public List<com.AnimalSaverV5.repository.entities.AnimalFamily> getAllAnimalFamily() {
+        try {
+            List<AnimalFamily> animalFamilys = animalRepository.getAllAnimalFamily();
+            System.out.println(animalFamilys);
+            return animalFamilys;
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
     public void addAnimal(AnimalSaverV5.controllers.Animal unconvertedAnimal) {
-        System.out.println("in add animal managed bean");
         Animal animal = convertToAnimal(unconvertedAnimal);
         System.out.println(animal);
         System.out.println("saving");
@@ -57,9 +68,7 @@ public class AnimalManagedBean implements Serializable{
         } catch(Exception e) {
             System.out.println(e);
         }
-        
     }
-    
     private Animal convertToAnimal(AnimalSaverV5.controllers.Animal localAnimal) {
         Animal animal = new Animal();
         String street_number = localAnimal.getStreetNumber();
@@ -74,12 +83,16 @@ public class AnimalManagedBean implements Serializable{
         animal.setAnimalColor(localAnimal.getAnimalColor());
         animal.setAnimalImage(localAnimal.getAnimalImage());
         animal.setWikiLink(localAnimal.getWikiLink());
+        try {            
+            animal.setAnimalFamily(animalRepository.getAnimalFamilyByID(localAnimal.getAnimalFamilyID()));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         return animal;
     }
     
     public void editAnimal(Animal animal) {
         try{
-            System.out.println("saving edited animal");
             String s = animal.getLocation().getStreetNumber();
             AnimalLocation animalLocation = animal.getLocation();
             animalLocation.setStreetNumber(s);
@@ -89,6 +102,5 @@ public class AnimalManagedBean implements Serializable{
         } catch(Exception e) {
               System.out.println(e);
         }
-        System.out.println(animal);
     }
 }

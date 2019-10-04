@@ -7,6 +7,7 @@ package AnimalSaverV5.controllers;
 
 import AnimalSaverV5.mbeans.AnimalManagedBean;
 import com.AnimalSaverV5.repository.entities.Animal;
+import com.AnimalSaverV5.repository.entities.AnimalFamily;
 import java.util.ArrayList;
 import java.util.List;
 import javax.el.ELContext;
@@ -28,17 +29,19 @@ public class AnimalApplication {
     AnimalManagedBean animalManagedBean;
     
     private ArrayList<Animal> animals;
+    private ArrayList<AnimalFamily> animalFamilys;
 
     public AnimalApplication() throws Exception {
         animals = new ArrayList<>();
-        
+        animalFamilys = new ArrayList<>();
+                
         //instantiate propertyManagedBean
         ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-        System.out.println("sfads");
         animalManagedBean = (AnimalManagedBean)FacesContext.getCurrentInstance().getApplication()
                 .getELResolver().getValue(elContext, null, "animalManagedBean");
         //get animals from db
         updateAnimalList();
+        updateAnimalFamilyList();
     }
 
     public ArrayList<Animal> getAnimals() {
@@ -48,10 +51,29 @@ public class AnimalApplication {
     public void setAnimals(ArrayList<Animal> animals) {
         this.animals = animals;
     }
+
+    public ArrayList<AnimalFamily> getAnimalFamilys() {
+        return animalFamilys;
+    }
+
+    public void setAnimalFamilys(ArrayList<AnimalFamily> animalFamilys) {
+        this.animalFamilys = animalFamilys;
+    }
+    
+    public void updateAnimalFamilyList() {
+        if(animalFamilys != null && animalFamilys.size() > 0) {
+        } else {
+            animalFamilys.clear();
+            for(com.AnimalSaverV5.repository.entities.AnimalFamily animal: animalManagedBean.getAllAnimalFamily())
+            {
+                animalFamilys.add(animal);
+            }
+            setAnimalFamilys(animalFamilys);
+        }
+    }
     
     public void updateAnimalList() {
         if(animals != null && animals.size() > 0) {
-            
         } else {
             animals.clear();
             for(com.AnimalSaverV5.repository.entities.Animal animal: animalManagedBean.getAllAnimals())
@@ -61,5 +83,14 @@ public class AnimalApplication {
             System.out.println(animals);
             setAnimals(animals);
         }
+    }
+    
+    public void refeshList() {
+        animals.clear();
+        for(com.AnimalSaverV5.repository.entities.Animal animal: animalManagedBean.getAllAnimals())
+        {
+            animals.add(animal);
+        }
+        setAnimals(animals);
     }
 }

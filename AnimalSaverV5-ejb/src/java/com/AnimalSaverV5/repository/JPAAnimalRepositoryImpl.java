@@ -6,6 +6,7 @@
 package com.AnimalSaverV5.repository;
 
 import com.AnimalSaverV5.repository.entities.Animal;
+import com.AnimalSaverV5.repository.entities.AnimalFamily;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -20,11 +21,6 @@ public class JPAAnimalRepositoryImpl implements AnimalRepository{
     
     @PersistenceContext(unitName = "AnimalSaverV5-ejbPU")
     private EntityManager entityManager;
-    
-    
-//        List<Property> properties =  entityManager.createNamedQuery(Property.GET_ALL_QUERY_NAME).getResultList(); 
-//        property.setPropertyId(properties.get(0).getPropertyId() + 1);
-//        
 
     @Override
     public void addAnimal(Animal animal) throws Exception {
@@ -73,7 +69,19 @@ public class JPAAnimalRepositoryImpl implements AnimalRepository{
         }
     }
 
-    
-    
-    
+    @Override
+    public List<AnimalFamily> getAllAnimalFamily() throws Exception {
+        try {
+            return entityManager.createNamedQuery(AnimalFamily.GET_ALL_QUERY_NAME).getResultList();
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    @Override
+    public AnimalFamily getAnimalFamilyByID(int id) throws Exception {
+        AnimalFamily animalFamily = entityManager.find(AnimalFamily.class, id);
+        return animalFamily;
+    }
 }

@@ -6,6 +6,7 @@
 package com.AnimalSaverV5.repository;
 
 import com.AnimalSaverV5.repository.entities.Animal;
+import com.AnimalSaverV5.repository.entities.AnimalFamily;
 import java.util.List;
 import javax.ejb.Remote;
 
@@ -22,6 +23,9 @@ public interface AnimalRepository {
     public List<Animal> getAllAnimalFamilyList() throws Exception;
     public void removeAnimal(int animalId) throws Exception;
     public void editAnimal(Animal animal) throws Exception;
+    
+    public List<AnimalFamily> getAllAnimalFamily() throws Exception;
+    public AnimalFamily getAnimalFamilyByID(int id) throws Exception;
     
     
 }

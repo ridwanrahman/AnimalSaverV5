@@ -42,6 +42,7 @@ public class AddAnimal {
                 .getApplication()
                 .getELResolver()
                 .getValue(context, null, "animalApplication");
+        app.refeshList();
         ELContext elContext = FacesContext.getCurrentInstance().getELContext();
         animalManagedBean = (AnimalManagedBean) FacesContext.getCurrentInstance().getApplication()
                 .getELResolver().getValue(elContext, null, "animalManagedBean");
@@ -50,9 +51,8 @@ public class AddAnimal {
     public void addAnimal(Animal unconvertedAnimal) {
         try {
             System.out.println("in add animal controller");
-            System.out.println(unconvertedAnimal);
             animalManagedBean.addAnimal(unconvertedAnimal);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Debugging"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Animal has been saved successfully"));
         } catch(Exception e) {
             System.out.println(e);
         }

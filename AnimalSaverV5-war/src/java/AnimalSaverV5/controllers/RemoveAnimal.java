@@ -43,6 +43,8 @@ public class RemoveAnimal {
                 .getValue(context, null, "animalApplication");
         app.updateAnimalList();
         
+        app.refeshList();
+        
         //instantiate animalManagedBean
         ELContext eLContext = FacesContext.getCurrentInstance().getELContext();
         animalManagedBean = (AnimalManagedBean) FacesContext.getCurrentInstance().getApplication()
