@@ -1,0 +1,190 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.AnimalSaverV5.repository.entities;
+
+import java.io.Serializable;
+import java.sql.Time;
+import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+/**
+ *
+ * @author ridwanurrahman
+ */
+@Entity
+@Table(name = "Contact")
+@NamedQueries({
+    @NamedQuery(name = Contact.GET_ALL_QUERY_NAME, query = "SELECT c FROM Contact c order by c.contactAnimalId desc")})
+public class Contact implements Serializable{
+    
+    public static final String GET_ALL_QUERY_NAME = "Contact.getAll";
+    
+    public enum Status { EXTINCT, ENDANGERED, NORMAL};
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "contact_animal_id")
+    private int contactAnimalId;
+    private String animalName;
+    private String animalDesc;
+    @Enumerated(EnumType.STRING)
+    private Status status;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date;
+    private Time time;
+    private int amount;
+    private String longitude;
+    private String latitude;
+    private String animalImage;
+    private String name;
+    private String contactNumber;
+    private String emailAddress;
+    private String phoneNumber;
+
+    public Contact() {
+    }
+
+    public Contact(int contactAnimalId, String animalName, String animalDesc, Status status, Date date, Time time, int amount, String longitude, String latitude, String animalImage, String name, String contactNumber, String emailAddress, String phoneNumber) {
+        this.contactAnimalId = contactAnimalId;
+        this.animalName = animalName;
+        this.animalDesc = animalDesc;
+        this.status = status;
+        this.date = date;
+        this.time = time;
+        this.amount = amount;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.animalImage = animalImage;
+        this.name = name;
+        this.contactNumber = contactNumber;
+        this.emailAddress = emailAddress;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public int getContactAnimalId() {
+        return contactAnimalId;
+    }
+
+    public void setContactAnimalId(int contactAnimalId) {
+        this.contactAnimalId = contactAnimalId;
+    }
+
+    public String getAnimalName() {
+        return animalName;
+    }
+
+    public void setAnimalName(String animalName) {
+        this.animalName = animalName;
+    }
+
+    public String getAnimalDesc() {
+        return animalDesc;
+    }
+
+    public void setAnimalDesc(String animalDesc) {
+        this.animalDesc = animalDesc;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public void setTime(Time time) {
+        this.time = time;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getAnimalImage() {
+        return animalImage;
+    }
+
+    public void setAnimalImage(String animalImage) {
+        this.animalImage = animalImage;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+    
+}
