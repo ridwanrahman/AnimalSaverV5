@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js" />
+        <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" />
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+        <script>
+            $(document).ready(function(){
+                alert("ji");
+                $(".datepicker").datepicker({
+                    dateFormat: 'yy/mm/dd'
+                })
+            })
+
+        </script>
+        <ui:insert name="header" >
+            <ui:include src="template/common/commonHeader.xhtml" />
+        </ui:insert>
+    </h:head>
+    <h:body>
+        <div>
+            <h1>Contact us if you see any strange animal</h1>
+            <f:view>
+                <h:form>
+                    <table class="table table-bordered ">
+                        <tr>
+                            <td width ="200">
+                                <h:outputLabel value="animalName" for="animalName" />
+                            </td>
+                            <td>
+                                <h:inputText id="animalName" value="#{contactUs.animalName}" title="animalName" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width ="200">
+                                <h:outputLabel value="animalDesc" for="animalDesc" />
+                            </td>
+                            <td>
+                                <h:inputText id="animalDesc" value="#{contactUs.animalDesc}" title="animalDesc" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width ="200">
+                                <h:outputLabel value="animalImage" for="animalImage" />
+                            </td>
+                            <td>
+                                <h:inputText id="animalImage" value="#{contactUs.animalImage}" title="animalImage" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width ="200">
+                                <h:outputLabel value="date" for="date" />
+                            </td>
+                            <td>
+                                <h:inputText styleClass="datepicker" id="date" value="#{contactUs.date}">
+                                    <f:convertDateTime pattern="yyyy/mm/dd"/>
+                                </h:inputText>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td width ="200">
+                                <h:outputLabel value="amount" for="amount" />
+                            </td>
+                            <td>
+                                <h:inputText id="amount" value="#{contactUs.amount}" title="amount" />
+                            </td>
+                        </tr>
+<!--                        <tr>
+                            <td width ="200">
+                                <h:outputLabel value="animalImage" for="animalImage" />
+                            </td>
+                            <td>
+                                <h:inputText id="animalImage" value="#{contactUs.animalImage}" title="animalImage" />
+                            </td>
+                        </tr>-->
+                        <tr>
+                            <td width ="200">
+                                <h:outputLabel value="Please enter your name" for="name" />
+                            </td>
+                            <td>
+                                <h:inputText id="name" value="#{contactUs.name}" title="name" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width ="200">
+                                <h:outputLabel value="Please enter your contactNumber" for="contactNumber" />
+                            </td>
+                            <td>
+                                <h:inputText id="contactNumber" value="#{contactUs.phoneNumber}" title="contactNumber" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width ="200">
+                                <h:outputLabel value="Please enter your email address" for="emailAddress" />
+                            </td>
+                            <td>
+                                <h:inputText id="emailAddress" value="#{contactUs.emailAddress}" title="emailAddress" />
+                            </td>
+                        </tr>
+                    </table>
+                    <h:commandButton id="submit" value="Submit" action="#{contactUsManagedBean.addContactUs(contactUs)}" class="btn btn-primary">
+                    </h:commandButton>
+                </h:form>
+            </f:view>
+        </div>
+        <!--Footer-->
+        <hr></hr>
+        <ui:insert name="footer">
+            <ui:include src="template/common/commonFooter.xhtml" />
+        </ui:insert>
+    </h:body>
+</html>

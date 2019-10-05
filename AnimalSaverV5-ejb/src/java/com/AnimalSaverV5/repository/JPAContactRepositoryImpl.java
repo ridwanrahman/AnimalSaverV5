@@ -25,7 +25,9 @@ public class JPAContactRepositoryImpl implements ContactRepository {
 
     @Override
     public void addContact(Contact contact) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Contact> contacts = entityManager.createNamedQuery(Contact.GET_ALL_QUERY_NAME).getResultList();
+        contact.setContactAnimalId(contacts.get(0).getContactAnimalId() + 1);
+        entityManager.persist(contact);
     }
 
     @Override

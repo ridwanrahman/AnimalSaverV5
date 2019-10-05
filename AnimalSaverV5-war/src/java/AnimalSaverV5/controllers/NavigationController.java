@@ -20,20 +20,24 @@ import javax.faces.bean.RequestScoped;
 public class NavigationController implements Serializable{
     
     @ManagedProperty(value = "#{param.pageId}")
-    private String pageId = "1";
+    private String pageId;
+
+    public NavigationController() {
+        //this.pageId = "1";
+    }
     
     public String showPage() {
         if(pageId == null) {
             return "index";
         }
         if(pageId.equals("1")) {
-            return "index";
+            return "index.xhtml";
         } else if(pageId.equals("2")) {
-            return "about";
+            return "about.xhtml";
         } else if(pageId.equals("3")) {
             return "imageGallery";
         } else if(pageId.equals("4")) {
-            return "contact";
+            return "contactUs";
         } else {
             return "index";
         }
