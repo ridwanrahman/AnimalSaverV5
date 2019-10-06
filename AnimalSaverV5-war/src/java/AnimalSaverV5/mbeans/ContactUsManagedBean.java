@@ -9,6 +9,7 @@ import AnimalSaverV5.controllers.ContactUs;
 import com.AnimalSaverV5.repository.entities.Contact;
 import com.AnimalSaverV5.repository.ContactRepository;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -25,6 +26,16 @@ public class ContactUsManagedBean implements Serializable {
     ContactRepository contactRepository;
 
     public ContactUsManagedBean() {
+    }
+    
+    public List<Contact> getAllContacts() {
+        try {
+            List<Contact> contacts = contactRepository.getAllContacts();
+            return contacts;
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        return null;
     }
     
     public void addContactUs(AnimalSaverV5.controllers.ContactUs newContact) {

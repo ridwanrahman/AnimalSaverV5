@@ -42,6 +42,7 @@ public class AnimalApplication {
         //get animals from db
         updateAnimalList();
         updateAnimalFamilyList();
+        refeshList();
         System.out.println("COnstructor");
         System.out.println(animals);
     }

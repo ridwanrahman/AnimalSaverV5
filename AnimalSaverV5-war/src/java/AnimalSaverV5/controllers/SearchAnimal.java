@@ -75,6 +75,14 @@ public class SearchAnimal {
         }
     }
     
+    public void searchAll() {
+        try {
+            app.refeshList();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
     
     
 }

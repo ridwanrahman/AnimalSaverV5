@@ -19,8 +19,60 @@ and open the template in the editor.
             <ui:include src="template/common/commonNavbar.xhtml" />
         </ui:insert>
         <h1>Check contacts page.</h1>
-        
+        <h:form id="StaffForm">
+            <table class="table table-bordered table-striped" style="width:15px">
+                <tr style="width:2px">
+                    <td> 
+                        <h:outputLabel id="animalName" value="Animal Name"  />
+                    </td>
+                    <td> 
+                        <h:outputLabel id="animalDesc" value="Animal Desc"  />
+                    </td>
+                    <td> 
+                        <h:outputLabel id="date" value="Date"/>
+                    </td>
+                    <td>
+                        <h:outputLabel id="amount" value="Number of animals seen"/>
+                    </td>
+                    <td>
+                        <h:outputLabel id="name" value="Name of person who saw"></h:outputLabel>
+                    </td>
+                    <td>
+                        <h:outputLabel id="contactNumber" value="Contact"></h:outputLabel>
+                    </td>
+                    <td>
+                        <h:outputLabel id="emailAddress" value="emailAddress"></h:outputLabel>
+                    </td>
+                </tr>
+                <ui:repeat value="#{contactUsApplication.contactUsPeople}" id="ContactedForm" var="contact" varStatus="status">
+                    <tr>
+                        <td>
+                            <h:outputText value="#{contactUsApplication.contactUsPeople.get(status.index).animalName}"></h:outputText>
+                        </td>
+                        <td>
+                            <h:outputText value="#{contactUsApplication.contactUsPeople.get(status.index).animalDesc}"></h:outputText>
+                        </td>
+                        <td>
+                            <h:outputText value="#{contactUsApplication.contactUsPeople.get(status.index).date}"></h:outputText>
+                        </td>
+                        <td>
+                            <h:outputText value="#{contactUsApplication.contactUsPeople.get(status.index).amount}"></h:outputText>
+                        </td>
+                        <td>
+                            <h:outputText value="#{contactUsApplication.contactUsPeople.get(status.index).name}"></h:outputText>
+                        </td>
+                        <td>
+                            <h:outputText value="#{contactUsApplication.contactUsPeople.get(status.index).contactNumber}"></h:outputText>
+                        </td>
+                        <td>
+                            <h:outputLabel value="#{contactUsApplication.contactUsPeople.get(status.index).emailAddress}"></h:outputLabel>
+                        </td>
+                    </tr>
+                </ui:repeat>
+            </table>
+        </h:form>
         <!--Footer-->
+        <hr></hr>
         <ui:insert name="footer" >
             <ui:include src="template/common/commonFooter.xhtml" />
         </ui:insert>        

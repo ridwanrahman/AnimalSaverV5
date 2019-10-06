@@ -12,6 +12,9 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -35,9 +38,15 @@ public class JPAContactRepositoryImpl implements ContactRepository {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    //Criteria API
     @Override
     public List<Contact> getAllContacts() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(Contact.class);
+        Root<Contact> p = query.from(Contact.class);
+        query.select(p);
+        List<Contact> contacts = entityManager.createQuery(query).getResultList();
+        return contacts;
     }
 
     @Override

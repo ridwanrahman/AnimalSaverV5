@@ -32,7 +32,7 @@ public class AnimalManagedBean implements Serializable{
     public AnimalManagedBean() {
     }
     
-    public List<Animal> getAllAnimals() {        
+    public List<Animal> getAllAnimals() {
         try {
             List<Animal> animals = animalRepository.getAllAnimal();
             return animals;
