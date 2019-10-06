@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"      
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <ui:insert name="header" >
@@ -22,30 +22,25 @@
         <h:form id="MyForm">
             <table class="table table-bordered table-striped">
                 <tr>
-                            <td> 
-                                <h:outputLabel id="Id" value="Id"  />
-                            </td>
-                            <td> 
-                                <h:outputLabel id="AnimalName" value="AnimalName"  />
-                            </td>
-          
-                            <td> 
-                                <h:outputLabel id="Address" value="Address"/>
-                            </td>
-                            
-                     </tr>
+                    <td> 
+                        <h:outputLabel id="Id" value="Id"  />
+                    </td>
+                    <td> 
+                        <h:outputLabel id="AnimalName" value="AnimalName"  />
+                    </td>
+                </tr>
                 <ui:repeat id="Myrepeat" value="#{animalApplication.animals}" var="animal" varStatus="status">
                     <tr onclick="document.getElementById('MyForm:principle').value = document.getElementById('MyForm:Myrepeat:#{status.index}:outPrice').textContent"> 
                         <td>
-                            <h:outputText value="#{animalApplication.animals.get(status.index).animalId}" id="animalId" /> 
+                            <h:outputText value="#{animalApplication.animals.get(status.index).animalId}" id="animalId" />
+                        </td>
+                        <td>
+                            <h:outputText value="#{animalApplication.animals.get(status.index).animalName}" id="animalName" />
                         </td>
                     </tr>
                 </ui:repeat>
-            </table>            
-            
+            </table>
         </h:form>
-        
-        
         <ui:insert name="header" >
             <ui:include src="template/common/commonFooter.xhtml" />
         </ui:insert>
@@ -53,4 +48,3 @@
         <h:outputLink value="staff/index.xhtml">Access Staff dashboard</h:outputLink>
     </h:body>
 </html>
-
