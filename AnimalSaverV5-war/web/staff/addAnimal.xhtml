@@ -32,6 +32,7 @@ and open the template in the editor.
                         <td>
                             <h:inputText id="animalName" value="#{animal.animalName}" title="animalName" required="true"
                                          validatorMessage="The animal name must be entered" requiredMessage="Please enter the animal name">
+                                <f:validateRegex pattern="[a-zA-Z]+"/>
                                 <f:validateLength minimum="2" maximum="30">
                                 </f:validateLength>
                             </h:inputText>
@@ -44,7 +45,7 @@ and open the template in the editor.
                         <td>
                             <h:inputTextarea id="animalDesc" value="#{animal.animalDesc}" title="animalDesc" required="true" 
                                              cols="50" rows="10" validatorMessage="The animal description must be entered"
-                                             requiredMessage="Please enter a description for the animal">
+                                             requiredMessage="Please enter a description for the animal">                                
                                 <f:validateLength minimum="2" maximum="1000">
                                 </f:validateLength>
                             </h:inputTextarea>
@@ -58,6 +59,7 @@ and open the template in the editor.
                             <h:inputText id="animalColor" value="#{animal.animalColor}" title="animalColor" required="true"
                                          validatorMessage="The color of the animal must be entered"
                                          requiredMessage="Please enter a color for the animal">
+                                <f:validateRegex pattern="[a-zA-Z]+"/>
                                 <f:validateLength minimum="2" maximum="1000">
                                 </f:validateLength>
                             </h:inputText>
@@ -78,7 +80,7 @@ and open the template in the editor.
                         </td>
                         <td>
                             <h:inputText id="wikiLink" value="#{animal.wikiLink}" title="wikiLink">
-                                <f:validator validatorId = "emailValidator" />
+                                <f:validator validatorId = "urlValidator" />
                             </h:inputText>
                         </td>
                     </tr>
