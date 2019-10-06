@@ -89,15 +89,29 @@ and open the template in the editor.
                             <h:outputLabel value="Postcode" for="postcode" />
                         </td>
                         <td>
-                            <h:inputText id="postcode" value="#{animal.postcode}" title="postcode" />
+                            <h:inputText id="postcode" value="#{animal.postcode}" title="postcode" required="true"
+                                         validatorMessage="The postcode must be entered"
+                                         requiredMessage="Please enter a postcode">
+                                <f:validateRegex pattern="[1-9]+"/>
+                            </h:inputText>
                         </td>
                     </tr>
                     <tr>
                         <td width ="200">
                             <h:outputLabel value="State" for="state" />
                         </td>
-                        <td>
-                            <h:inputText id="state" value="#{animal.state}" title="state" />
+                        <td>                            
+                            <h:selectOneMenu value = "#{animal.state}">
+                                <f:validator validatorId = "dropDownMenuValidator" />
+                                <f:selectItem itemValue = "#" itemLabel = "Please select a state" />                                 
+                                <f:selectItem itemValue = "Queensland" itemLabel = "Queensland" /> 
+                                <f:selectItem itemValue = "Victoria" itemLabel = "Victoria" />
+                                <f:selectItem itemValue = "New South Wales" itemLabel = "New South Wales" />
+                                <f:selectItem itemValue = "South Australia" itemLabel = "South Australia" />
+                                <f:selectItem itemValue = "Tasmania" itemLabel = "Tasmania" />
+                                <f:selectItem itemValue = "Western Australia" itemLabel = "Western Australia" />
+                                
+                            </h:selectOneMenu>
                         </td>
                     </tr>
                     <tr>
@@ -129,18 +143,10 @@ and open the template in the editor.
                             <h:outputLabel value="Animal Family" for="animalFamily" />
                         </td>
                         <td>
-                            
-                            <!-- <h:selectOneMenu value="#{heritage.heritageGroupId}" style="margin: 15px">
-                                    <f:selectItems value="#{heritageGroupMB.heritageGroups}" var="groups" itemLabel="#{groups.groupCategory}-#{groups.groupSubCategory}"
-                                                   itemValue="#{groups.groupId}" />
-                                </h:selectOneMenu>   -->
-                            
-                            
-                            
-                            
                             <h:selectOneMenu id="animalFamilyID" value="#{animal.animalFamilyID}">
-                                <!-- <f:selectItem itemLabel="Please select a family." itemValue="#{null}"
-                                              noSelectionOption="true" /> -->
+                                <f:validator validatorId = "dropDownMenuValidator" />
+                                <f:selectItem itemLabel="Please select a family." itemValue="#"
+                                              noSelectionOption="true" />
                                 <f:selectItems value="#{animalManagedBean.allAnimalFamily}"
                                                var="c" itemLabel="#{c.animalFamilyID} - #{c.animalFamilyDesc}"
                                                itemValue="#{c.animalFamilyID}"/>
