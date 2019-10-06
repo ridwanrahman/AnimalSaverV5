@@ -42,6 +42,8 @@ public class AnimalApplication {
         //get animals from db
         updateAnimalList();
         updateAnimalFamilyList();
+        System.out.println("COnstructor");
+        System.out.println(animals);
     }
 
     public ArrayList<Animal> getAnimals() {
@@ -58,6 +60,11 @@ public class AnimalApplication {
 
     public void setAnimalFamilys(ArrayList<AnimalFamily> animalFamilys) {
         this.animalFamilys = animalFamilys;
+    }
+    
+    public void searchAnimalById(int id) throws Exception {
+        animals.clear();
+        animals.add(animalManagedBean.searchAnimalById(id));
     }
     
     public void updateAnimalFamilyList() {
