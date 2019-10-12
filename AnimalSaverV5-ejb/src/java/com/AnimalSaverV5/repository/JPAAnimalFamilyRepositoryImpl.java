@@ -6,6 +6,7 @@
 package com.AnimalSaverV5.repository;
 
 import com.AnimalSaverV5.repository.entities.AnimalFamily;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -22,8 +23,9 @@ public class JPAAnimalFamilyRepositoryImpl implements AnimalFamilyRepository{
 
 
     @Override
-    public void addAnimalFamily(AnimalFamily animal) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addAnimalFamily(AnimalFamily data) throws Exception {
+        List<AnimalFamily> animalFam = entityManager.createNamedQuery("AnimalFamily.getALLDESC").getResultList();
+        data.setAnimalFamilyID(animalFam.get(0).getAnimalFamilyID() + 1);
+        entityManager.persist(data);
     }
-    
 }

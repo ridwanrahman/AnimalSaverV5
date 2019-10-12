@@ -11,9 +11,49 @@
     </h:head>
     <h:body>
         <!--Navbar-->
-        <ui:insert name="header" >
+<!--        <ui:insert name="header" >
             <ui:include src="template/common/commonNavbar.xhtml" />
-        </ui:insert>
+        </ui:insert>-->
+
+
+<header class="header fixed-top">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">WebsiteName</a>
+                    </div>
+                    <h:form>
+                        <ul class="nav navbar-nav">
+                            <li class="">
+                                <h:commandLink action="index.xhtml" value="Home">
+<!--                                    <f:param name="pageId" value="1"/>-->
+                                </h:commandLink>
+                            </li>
+                           <li class="">
+                                <h:commandLink action="about.xhtml" value="About">
+                                   <!--<f:param name="pageId" value="2"/>-->
+                                </h:commandLink>
+                            </li>
+                            <li class="">
+                                    <h:commandLink action="#" value="Image Gallery">
+                                    <!--<f:param name="pageId" value="3"/>-->
+                                </h:commandLink>
+                            </li>
+                            <li class="">
+                                <h:commandLink action="contactUs.xhtml" value="Contact">
+                                    <!--<f:param name="pageId" value="4"/>-->
+                                </h:commandLink>
+                            </li>
+                            
+                        </ul>
+                    </h:form>
+                </div>
+            </nav>
+        </header>
+
+
+
+
         <header>
             <h1>Welcome to Indigenous Animal Imaging Database</h1>
         </header>

@@ -55,6 +55,7 @@ public class RemoveAnimal {
     public void removeAnimal(int id) {
         try {
             animalManagedBean.removeAnimal(id);
+            app.refeshList();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Animal has been deleted succesfully"));
         } catch(Exception e) {
             System.out.println(e);

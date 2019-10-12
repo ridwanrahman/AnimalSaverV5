@@ -6,9 +6,9 @@
 package AnimalSaverV5.controllers;
 
 import AnimalSaverV5.mbeans.AnimalManagedBean;
+import java.io.Serializable;
 import javax.el.ELContext;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -18,25 +18,24 @@ import javax.inject.Named;
  * @author ridwanurrahman
  */
 @RequestScoped
-@Named("addAnimal")
-public class AddAnimal {
+@Named("addAnimalFamily")
+public class AddAnimalFamiy implements Serializable{
     
     @ManagedProperty(value = "#{animalManagedBean}")
     AnimalManagedBean animalManagedBean;
     
-    private Animal animal;
-    
+    private AnimalFamily animalFamily;
     AnimalApplication app;
 
-    public Animal getAnimal() {
-        return animal;
+    public AnimalFamily getAnimalFamily() {
+        return animalFamily;
     }
 
-    public void setAnimal(Animal animal) {
-        this.animal = animal;
+    public void setAnimalFamily(AnimalFamily animalFamily) {
+        this.animalFamily = animalFamily;
     }
     
-    public AddAnimal() {
+    public AddAnimalFamiy() {
         ELContext context = FacesContext.getCurrentInstance().getELContext();
         app = (AnimalApplication) FacesContext.getCurrentInstance()
                 .getApplication()
@@ -48,13 +47,9 @@ public class AddAnimal {
                 .getELResolver().getValue(elContext, null, "animalManagedBean");
     }
     
-    public void addAnimal(Animal unconvertedAnimal) {
+    public void addAnimalFamily(AnimalFamily unconvertedAnimalFamily) {
         try {
-            System.out.println("in add animal controller");
-            animalManagedBean.addAnimal(unconvertedAnimal);
-            app.updateAnimalList();
-            app.refeshList();
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Animal has been saved successfully"));
+            animalManagedBean.addAnimalFamily(unconvertedAnimalFamily);
         } catch(Exception e) {
             System.out.println(e);
         }

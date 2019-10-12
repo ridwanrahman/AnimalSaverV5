@@ -6,6 +6,7 @@
 package AnimalSaverV5.mbeans;
 
 
+import com.AnimalSaverV5.repository.AnimalFamilyRepository;
 import com.AnimalSaverV5.repository.AnimalRepository;
 import com.AnimalSaverV5.repository.entities.Animal;
 import com.AnimalSaverV5.repository.entities.AnimalFamily;
@@ -28,6 +29,9 @@ public class AnimalManagedBean implements Serializable{
     
     @EJB
     AnimalRepository animalRepository;
+    
+    @EJB
+    AnimalFamilyRepository animmalFamilyRepository;
 
     public AnimalManagedBean() {
     }
@@ -112,5 +116,26 @@ public class AnimalManagedBean implements Serializable{
         } catch(Exception e) {
               System.out.println(e);
         }
+    }
+    
+    public void addAnimalFamily(AnimalSaverV5.controllers.AnimalFamily ani) {
+        try {
+            AnimalFamily animalFamily = convertToAnimalFamily(ani);
+            try {
+                System.out.println("sending data to ejb");
+                animmalFamilyRepository.addAnimalFamily(animalFamily);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    public AnimalFamily convertToAnimalFamily(AnimalSaverV5.controllers.AnimalFamily sample) {
+        AnimalFamily animalFamily = new AnimalFamily();
+        animalFamily.setAnimalFamilyName(sample.getAnimalFamilyName());
+        animalFamily.setAnimalFamilyDesc(sample.getAnimalFamilyDesc());
+        return animalFamily;
     }
 }

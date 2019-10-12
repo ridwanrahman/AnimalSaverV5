@@ -26,11 +26,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "ANIMAL_FAMILY")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = AnimalFamily.GET_ALL_QUERY_NAME, query = "SELECT af FROM AnimalFamily af")})
+    @NamedQuery(name = AnimalFamily.GET_ALL_QUERY_NAME, query = "SELECT af FROM AnimalFamily af"),
+    @NamedQuery(name = "AnimalFamily.getALLDESC", query = "SELECT f FROM AnimalFamily f ORDER BY f.animalFamilyID DESC")})
 
 public class AnimalFamily implements Serializable{
     
     public static final String GET_ALL_QUERY_NAME = "AnimalFamily.getAll";
+//    public static final String GET_SOME_STRING = "AnimalFamily.getSome";
     
     private int animalFamilyID;
     private String animalFamilyName;

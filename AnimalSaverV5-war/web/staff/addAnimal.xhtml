@@ -30,12 +30,13 @@ and open the template in the editor.
                             <h:outputLabel value="Name of animal" for="animalName" />
                         </td>
                         <td>
-                            <h:inputText id="animalName" value="#{animal.animalName}" title="animalName" required="true"
+                            <h:inputText id="animalName" value="#{animal.animalName}" tabindex="1" title="animalName" required="true"
                                          validatorMessage="The animal name must be entered" requiredMessage="Please enter the animal name">
-                                <f:validateRegex pattern="[a-zA-Z]+"/>
+                                <f:validateRegex pattern="[a-z A-Z]+"/>
                                 <f:validateLength minimum="2" maximum="30">
                                 </f:validateLength>
                             </h:inputText>
+                            <h:message for="animalName" style = "color:red"/>
                         </td>
                     </tr>
                     <tr>
@@ -43,12 +44,13 @@ and open the template in the editor.
                             <h:outputLabel value="Description of animal" for="animalDesc" />
                         </td>
                         <td>
-                            <h:inputTextarea id="animalDesc" value="#{animal.animalDesc}" title="animalDesc" required="true" 
+                            <h:inputTextarea id="animalDesc" value="#{animal.animalDesc}" tabindex="2" title="animalDesc" required="true" 
                                              cols="50" rows="10" validatorMessage="The animal description must be entered"
                                              requiredMessage="Please enter a description for the animal">                                
                                 <f:validateLength minimum="2" maximum="1000">
                                 </f:validateLength>
                             </h:inputTextarea>
+                            <h:message for="animalDesc" style = "color:red"/>
                         </td>
                     </tr>
                     <tr>
@@ -56,14 +58,14 @@ and open the template in the editor.
                             <h:outputLabel value="Color of animal" for="animalColor" />
                         </td>
                         <td>
-                            <h:inputText id="animalColor" value="#{animal.animalColor}" title="animalColor" required="true"
+                            <h:inputText id="animalColor" value="#{animal.animalColor}" tabindex="3" title="animalColor" required="true"
                                          validatorMessage="The color of the animal must be entered"
                                          requiredMessage="Please enter a color for the animal">
                                 <f:validateRegex pattern="[a-zA-Z]+"/>
                                 <f:validateLength minimum="2" maximum="1000">
                                 </f:validateLength>
                             </h:inputText>
-                                         
+                            <h:message for="animalColor" style = "color:red"/>
                         </td>
                     </tr>
                     <tr>
@@ -71,7 +73,7 @@ and open the template in the editor.
                             <h:outputLabel value="Image of animal" for="animalImage" />
                         </td>
                         <td>
-                            <h:inputText id="animalImage" value="#{animal.animalImage}" title="animalImage" />
+                            <h:inputText id="animalImage" value="#{animal.animalImage}" tabindex="4" title="animalImage" />
                         </td>
                     </tr>
                     <tr>
@@ -79,9 +81,10 @@ and open the template in the editor.
                             <h:outputLabel value="Wikipedia Link" for="wikiLink" />
                         </td>
                         <td>
-                            <h:inputText id="wikiLink" value="#{animal.wikiLink}" title="wikiLink">
+                            <h:inputText id="wikiLink" value="#{animal.wikiLink}" tabindex="5" title="wikiLink">
                                 <f:validator validatorId = "urlValidator" />
                             </h:inputText>
+                            <h:message for="wikiLink" style = "color:red"/>
                         </td>
                     </tr>
                     <tr>
@@ -89,11 +92,12 @@ and open the template in the editor.
                             <h:outputLabel value="Postcode" for="postcode" />
                         </td>
                         <td>
-                            <h:inputText id="postcode" value="#{animal.postcode}" title="postcode" required="true"
+                            <h:inputText id="postcode" value="#{animal.postcode}" tabindex="6" title="postcode" required="true"
                                          validatorMessage="The postcode must be entered"
                                          requiredMessage="Please enter a postcode">
                                 <f:validateRegex pattern="[1-9]+"/>
                             </h:inputText>
+                            <h:message for="postcode" style = "color:red"/>
                         </td>
                     </tr>
                     <tr>
@@ -101,7 +105,7 @@ and open the template in the editor.
                             <h:outputLabel value="State" for="state" />
                         </td>
                         <td>                            
-                            <h:selectOneMenu value = "#{animal.state}">
+                            <h:selectOneMenu value = "#{animal.state}" tabindex="7">
                                 <f:validator validatorId = "dropDownMenuValidator" />
                                 <f:selectItem itemValue = "#" itemLabel = "Please select a state" />                                 
                                 <f:selectItem itemValue = "Queensland" itemLabel = "Queensland" /> 
@@ -110,8 +114,8 @@ and open the template in the editor.
                                 <f:selectItem itemValue = "South Australia" itemLabel = "South Australia" />
                                 <f:selectItem itemValue = "Tasmania" itemLabel = "Tasmania" />
                                 <f:selectItem itemValue = "Western Australia" itemLabel = "Western Australia" />
-                                
                             </h:selectOneMenu>
+                            <h:message for="state" style = "color:red"/>
                         </td>
                     </tr>
                     <tr>
@@ -119,7 +123,7 @@ and open the template in the editor.
                             <h:outputLabel value="Street Number" for="street_number" />
                         </td>
                         <td>
-                            <h:inputText id="street_number" value="#{animal.streetNumber}" title="street_number" />
+                            <h:inputText id="street_number" value="#{animal.streetNumber}" tabindex="8" title="street_number" />
                         </td>
                     </tr>
                     <tr>
@@ -127,7 +131,7 @@ and open the template in the editor.
                             <h:outputLabel value="Street Address" for="street_address" />
                         </td>
                         <td>
-                            <h:inputText id="street_address" value="#{animal.streetAddress}" title="street_address" />
+                            <h:inputText id="street_address" value="#{animal.streetAddress}" tabindex="9" title="street_address" />
                         </td>
                     </tr>
                     <tr>
@@ -135,7 +139,7 @@ and open the template in the editor.
                             <h:outputLabel value="Suburb" for="suburb" />
                         </td>
                         <td>
-                            <h:inputText id="suburb" value="#{animal.suburb}" title="suburb" />
+                            <h:inputText id="suburb" value="#{animal.suburb}" tabindex="10" title="suburb" />
                         </td>
                     </tr>
                     <tr>
@@ -143,7 +147,7 @@ and open the template in the editor.
                             <h:outputLabel value="Animal Family" for="animalFamily" />
                         </td>
                         <td>
-                            <h:selectOneMenu id="animalFamilyID" value="#{animal.animalFamilyID}">
+                            <h:selectOneMenu id="animalFamilyID" tabindex="11" value="#{animal.animalFamilyID}">
                                 <f:validator validatorId = "dropDownMenuValidator" />
                                 <f:selectItem itemLabel="Please select a family." itemValue="#"
                                               noSelectionOption="true" />
@@ -151,11 +155,14 @@ and open the template in the editor.
                                                var="c" itemLabel="#{c.animalFamilyID} - #{c.animalFamilyDesc}"
                                                itemValue="#{c.animalFamilyID}"/>
                             </h:selectOneMenu>
+                            <h:message for="animalFamily" style = "color:red"/>
                         </td>
                     </tr>
                 </table>                
                 <h:commandButton id="submit" value="Submit" action="#{addAnimal.addAnimal(animal)}" class="btn btn-primary">
                 </h:commandButton>
+<!--                <h:commandButton id="close" value="Close" action="/staff/index.xhtml" class="btn btn-primary">
+                </h:commandButton>-->
             </h:form>
         </f:view>
         <!--Footer-->

@@ -42,13 +42,14 @@ public class AnimalApplication {
         //get animals from db
         updateAnimalList();
         updateAnimalFamilyList();
-        refeshList();
+//        refeshList();
         System.out.println("COnstructor");
         System.out.println(animals);
     }
 
     public ArrayList<Animal> getAnimals() {
-        return animals;
+//        refeshList();
+        return this.animals;
     }
 
     public void setAnimals(ArrayList<Animal> animals) {
@@ -88,7 +89,7 @@ public class AnimalApplication {
             {
                 animals.add(animal);
             }
-            System.out.println(animals);
+//            System.out.println(animals);
             setAnimals(animals);
         }
     }

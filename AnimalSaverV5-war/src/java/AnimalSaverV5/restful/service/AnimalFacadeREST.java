@@ -6,6 +6,7 @@
 package AnimalSaverV5.restful.service;
 
 import AnimalSaverV5.restful.Animal;
+
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -19,13 +20,15 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import com.google.gson.Gson;
 
 /**
  *
  * @author ridwanurrahman
  */
 @Stateless
-@Path("animalsaverv5.restful.animal")
+@Path("animalsaverv5.api")
 public class AnimalFacadeREST extends AbstractFacade<Animal> {
 
     @PersistenceContext(unitName = "AnimalSaverV5-warPU")
@@ -64,9 +67,28 @@ public class AnimalFacadeREST extends AbstractFacade<Animal> {
 
     @GET
     @Override
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public List<Animal> findAll() {
+        System.out.println("herere");
+        List<Animal> animalList = super.findAll();
         return super.findAll();
+    }
+    
+    @GET
+    @Path("/test")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response test() {
+        System.out.println("hererererere");
+        List<Animal> animalList = super.findAll();
+        return Response
+                .status(200)
+            .header("Access-Control-Allow-Origin", "*")
+            .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+            .header("Access-Control-Allow-Credentials", "true")
+            .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+            .header("Access-Control-Max-Age", "1209600")
+            .entity(animalList)
+            .build();
     }
 
     @GET
