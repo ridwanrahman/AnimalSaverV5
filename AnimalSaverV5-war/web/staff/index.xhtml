@@ -25,17 +25,56 @@ and open the template in the editor.
         <p>Welcome to the secured Staff area.</p>
         
         <h:form id="StaffForm">
+            <div>
+                <table class="table" style="width:20px">
+                    <tr>
+                        <td>
+                            <h:selectOneMenu value = "#{searchAnimal.animalState}" tabindex="7">
+                                <f:validator validatorId = "dropDownMenuValidator" />
+                                <f:selectItem itemValue = "#" itemLabel = "Please select a state" />                                 
+                                <f:selectItem itemValue = "Queensland" itemLabel = "Queensland" /> 
+                                <f:selectItem itemValue = "Victoria" itemLabel = "Victoria" />
+                                <f:selectItem itemValue = "New South Wales" itemLabel = "New South Wales" />
+                                <f:selectItem itemValue = "South Australia" itemLabel = "South Australia" />
+                                <f:selectItem itemValue = "Tasmania" itemLabel = "Tasmania" />
+                                <f:selectItem itemValue = "Western Australia" itemLabel = "Western Australia" />
+                            </h:selectOneMenu>
+                        </td>
+                        <td>
+                            <h:selectOneMenu id="animalFamilyID" tabindex="11" value="#{searchAnimal.animalfam}">
+                                <f:validator validatorId = "dropDownMenuValidator" />
+                                <f:selectItem itemLabel="Please select a family." itemValue="#"
+                                              noSelectionOption="true" />
+                                <f:selectItems value="#{animalManagedBean.allAnimalFamily}"
+                                               var="c" itemLabel="#{c.animalFamilyID} - #{c.animalFamilyDesc}"
+                                               itemValue="#{c.animalFamilyID}"/>
+                            </h:selectOneMenu>
+                        </td>
+                        <td>
+                            <h:commandButton id="searchByFamStat" value="Combinational Search" 
+                                             action="#{searchAnimal.searchAnimalByCombination(searchAnimal.animalState, searchAnimal.animalfam)}" class="btn btn-primary" >
+                            </h:commandButton>
+                            <h:commandButton id="viewAll" value="View All" action="#{searchAnimal.searchAll()}" class="btn btn-primary">
+                            </h:commandButton>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            
             <table class="table table-bordered table-striped" style="width:15px">
                 <tr style="width:2px">
                     <td> 
                         <h:outputLabel id="Id" value="Id"  />
                     </td>
                     <td> 
-                        <h:outputLabel id="animalname" value="animalname"  />
+                        <h:outputLabel id="animalname" value="Animal Name"  />
                     </td>
                     <td> 
-                        <h:outputLabel id="AnimalDesc" value="AnimalDesc"/>
-                    </td>                            
+                        <h:outputLabel id="AnimalDesc" value="Animal Description"/>
+                    </td>
+                    <td> 
+                        <h:outputLabel id="animalFamily" value="Animal Family"/>
+                    </td>
                 </tr>
                 <ui:repeat value="#{animalApplication.animals}" id="StaffForm" var="animal" varStatus="status">
                     <tr>
@@ -47,6 +86,9 @@ and open the template in the editor.
                         </td>
                         <td>
                             <h:outputText value="#{animalApplication.animals.get(status.index).animalDesc}" id="AnimalDesc"></h:outputText>
+                        </td>
+                        <td>
+                            <h:outputText value="#{animalApplication.animals.get(status.index).animalFamily.animalFamilyDesc}" id="animalFamily"></h:outputText>
                         </td>
                         <td>
                             <h:commandLink value="View" action="viewAnimal.xhtml" >

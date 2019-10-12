@@ -23,6 +23,7 @@ public interface AnimalRepository {
     public List<Animal> getAllAnimalFamilyList() throws Exception;
     public void removeAnimal(int animalId) throws Exception;
     public void editAnimal(Animal animal) throws Exception;
+    public Animal searchAnimalByFamilyId(int id) throws Exception;
     
     public List<AnimalFamily> getAllAnimalFamily() throws Exception;
     public AnimalFamily getAnimalFamilyByID(int id) throws Exception;

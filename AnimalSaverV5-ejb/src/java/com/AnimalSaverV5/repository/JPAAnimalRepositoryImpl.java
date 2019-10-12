@@ -84,4 +84,12 @@ public class JPAAnimalRepositoryImpl implements AnimalRepository{
         AnimalFamily animalFamily = entityManager.find(AnimalFamily.class, id);
         return animalFamily;
     }
+
+    @Override
+    public Animal searchAnimalByFamilyId(int id) throws Exception {
+        System.out.println("inside ejb");
+        System.out.println(id);
+        AnimalFamily animalFamily = entityManager.find(AnimalFamily.class, id);
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

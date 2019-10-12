@@ -30,10 +30,12 @@ public class AnimalApplication {
     
     private ArrayList<Animal> animals;
     private ArrayList<AnimalFamily> animalFamilys;
+    private ArrayList<Animal> animals2;
 
     public AnimalApplication() throws Exception {
         animals = new ArrayList<>();
         animalFamilys = new ArrayList<>();
+        animals2 = new ArrayList<>();
                 
         //instantiate propertyManagedBean
         ELContext elContext = FacesContext.getCurrentInstance().getELContext();
@@ -69,6 +71,27 @@ public class AnimalApplication {
         animals.add(animalManagedBean.searchAnimalById(id));
     }
     
+    public void searchAnimalByFamilyId(int id, String state) throws Exception {
+        System.out.println("this function called");
+        this.updateAnimalList();
+        ArrayList<Animal> newList = new ArrayList<>(animals);
+        animals2.clear();
+        System.out.println(id);
+        System.out.println(state);
+        System.out.println("**********");
+        System.out.println("animals size "+animals.size());
+        for(Animal ani: newList)
+        {
+            if(ani.getAnimalFamily().getAnimalFamilyID() == id && ani.getLocation().getState().equals(state))
+            {
+                System.out.println(ani.getAnimalName());
+                animals2.add(ani);
+            }
+        }
+//        animals.clear();
+        setAnimals(animals2);
+    }
+    
     public void updateAnimalFamilyList() {
         if(animalFamilys != null && animalFamilys.size() > 0) {
         } else {
@@ -82,6 +105,7 @@ public class AnimalApplication {
     }
     
     public void updateAnimalList() {
+//        System.out.println("updateing");
         if(animals != null && animals.size() > 0) {
         } else {
             animals.clear();
@@ -89,7 +113,6 @@ public class AnimalApplication {
             {
                 animals.add(animal);
             }
-//            System.out.println(animals);
             setAnimals(animals);
         }
     }

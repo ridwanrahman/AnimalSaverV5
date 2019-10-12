@@ -23,6 +23,9 @@ public class SearchAnimal {
     AnimalApplication app;
     private int searchByInt;
     
+    private String animalState;
+    private String animalfam;
+    
     private int searchByAnimalFamilyId;
 
     public Animal getAnimal() {
@@ -57,6 +60,26 @@ public class SearchAnimal {
         this.searchByAnimalFamilyId = searchByAnimalFamilyId;
     }
 
+    // FOR combinational search starts
+    public String getAnimalState() {
+        return animalState;
+    }
+
+    public void setAnimalState(String animalState) {
+        this.animalState = animalState;
+    }
+
+    public String getAnimalfam() {
+        return animalfam;
+    }
+
+    public void setAnimalfam(String animalfam) {
+        this.animalfam = animalfam;
+    }
+    // FOR combinational search ends
+    
+    
+
     public SearchAnimal() {
         ELContext eLContext = FacesContext.getCurrentInstance().getELContext();
         
@@ -81,6 +104,16 @@ public class SearchAnimal {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+    
+    public void searchAnimalByCombination(String state, String fam) {
+        int result = Integer.parseInt(fam);			
+        try {
+            app.searchAnimalByFamilyId(result, state);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
     }
     
     

@@ -83,6 +83,15 @@ public class AnimalManagedBean implements Serializable{
         return null;
     }
     
+    public AnimalFamily searchAnimalByFamilyId(int id) {
+        try {
+            return animalRepository.getAnimalFamilyByID(id);
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
     private Animal convertToAnimal(AnimalSaverV5.controllers.Animal localAnimal) {
         Animal animal = new Animal();
         String street_number = localAnimal.getStreetNumber();
