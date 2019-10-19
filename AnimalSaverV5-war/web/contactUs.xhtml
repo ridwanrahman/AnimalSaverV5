@@ -27,6 +27,9 @@ and open the template in the editor.
         </ui:insert>
     </h:head>
     <h:body>
+        <ui:insert name="header" >
+            <ui:include src="template/common/commonNavbar.xhtml" />
+        </ui:insert>
         <div>
             <h1>Contact us if you see any strange animal</h1>
             <f:view>

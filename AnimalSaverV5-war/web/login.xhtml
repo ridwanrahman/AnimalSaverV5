@@ -16,7 +16,7 @@ and open the template in the editor.
         </ui:insert>
     </h:head>
     <h:body>
-        <div>
+        <div class="container-fluid">
             <!--Navbar-->
             <ui:insert name="header" >
                 <ui:include src="template/common/commonNavbar.xhtml" />
@@ -25,12 +25,18 @@ and open the template in the editor.
                 <h1>User Authentication</h1>
             </header>
             <form method="POST" action="j_security_check">
-            <label for="j_username">Username:</label>
-            <input type="text" name="j_username" />
-            <label for="j_password">Password:</label>
-            <input type="password" name="j_password" />
-            <input type="submit" value="Submit"/>
+                <label for="j_username">Username:</label>
+                <input type="text" name="j_username" />
+                <label for="j_password">Password:</label>
+                <input type="password" name="j_password" />
+                <input type="submit" value="Submit" class="btn btn-primary"/>
             </form>
+        <hr></hr>
+        <ui:insert name="header" >
+            <ui:include src="template/common/commonFooter.xhtml" />
+        </ui:insert>
+        <h:outputLink value="faces/admin/index.xhtml">Access Administration dashboard</h:outputLink><br/>
+        <h:outputLink value="faces/staff/index.xhtml">Access Staff dashboard</h:outputLink>
         </div>
     </h:body>
 </html>

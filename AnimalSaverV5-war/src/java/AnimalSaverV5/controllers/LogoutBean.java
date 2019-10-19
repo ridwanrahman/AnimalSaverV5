@@ -18,7 +18,8 @@ import javax.servlet.http.HttpSession;
 @RequestScoped
 public class LogoutBean {
     public String logout() {
+        System.out.println("logout clicked");
         ((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).invalidate();
-        return "faces/index.xhtml";
+        return "/login.xhtml";
     }
 }

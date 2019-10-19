@@ -6,9 +6,10 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"      
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Add staff</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -21,24 +22,55 @@ and open the template in the editor.
         <ui:insert name="header" >
             <ui:include src="template/common/commonNavbar.xhtml" />
         </ui:insert>
-        <div>
+        <div class="container-fluid">
             <h:form>
-                <h3>Add a new staff member</h3>
-                <h:panelGrid columns="3">
-                    <h:outputLabel for="username">User Name:</h:outputLabel>
-                    <h:inputText value="#{addStaffBean.userName}" id="name"></h:inputText>
-                    <h:message for="username" />
+                <table class="table table-bordered ">
+                    <h3>Add a new staff member</h3>
                     
-                    <h:outputLabel for="password">Password</h:outputLabel>
-                    <h:inputText value="#{addStaffBean.password}" id="password"></h:inputText>
-                    <h:message for="password" />
-                    
-                    <h:outputLabel for="usertype">User type</h:outputLabel>
-                    <h:inputText value="#{addStaffBean.userType}" id="usertype"></h:inputText>
-                    <h:message for="usertype" />
-                    
-                    <h:commandButton id="register" value="Register" action="#{addStaffBean.confirmation()}"></h:commandButton>
-                </h:panelGrid>
+                    <tr>
+                        <td width ="200">
+                            <h:outputLabel value="Username" for="username" />
+                        </td>
+                        <td>
+                            <h:inputText value="#{addStaffBean.userName}" tabindex="1" required="true" id="name"
+                                 requiredMessage="Please enter the user name">
+                                <f:validateRegex pattern="[a-z A-Z]+"/>
+                            </h:inputText>
+                            <h:message for="name" style = "color:red"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="200">
+                            <h:outputLabel value="Password" for="password" />
+                        </td>
+                        <td>
+                            <h:inputSecret value="#{addStaffBean.password}" tabindex="2" id="password"></h:inputSecret>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="200">
+                            <h:outputLabel value="Confirm Password" for="confirm_password" />
+                        </td>
+                        <td>
+                            <h:inputSecret value="#{addStaffBean.password2}" tabindex="3" id="password2"></h:inputSecret>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="200">
+                            <h:outputLabel value="User Type" for="user_type" />
+                        </td>
+                        <td>
+                            <h:selectOneMenu value = "#{addStaffBean.userType}" tabindex="4">
+                                <f:validator validatorId = "dropDownMenuValidator" />
+                                <f:selectItem itemValue = "#" itemLabel = "Please select a usertype" />
+                                <f:selectItem itemValue = "admin" itemLabel = "Admin" />
+                                <f:selectItem itemValue = "staff" itemLabel = "Staff" />
+                            </h:selectOneMenu>
+                        </td>
+                    </tr>
+                </table>
+                <h:commandButton id="register" value="Create user" action="#{addStaffBean.confirmation()}" class="btn btn-primary">
+                </h:commandButton>
             </h:form>
         </div>
     </h:body>

@@ -19,7 +19,7 @@ and open the template in the editor.
                     <h:form>
                         <ul class="nav navbar-nav">
                             <li class="">
-                                    <h:commandLink action="#" value="Home">
+                                    <h:commandLink action="index.xhtml" value="Home">
                                     <f:param name="pageId" value="1"/>
                                 </h:commandLink>
                             </li>
@@ -34,12 +34,12 @@ and open the template in the editor.
                                 </h:commandLink>
                             </li>
                             <li class="">
-                                <h:commandLink action="#" value="">
+                                <h:commandLink action="#{logoutBean.logout()}" value="Logout">
                                     <f:param name="pageId" value="4"/>
                                 </h:commandLink>
                             </li>
                             <li class="">
-                                <h:commandLink action="#{userController.logout()}" value="Logout">
+                                <h:commandLink action="#" value="">
                                     
                                 </h:commandLink>
                             </li>

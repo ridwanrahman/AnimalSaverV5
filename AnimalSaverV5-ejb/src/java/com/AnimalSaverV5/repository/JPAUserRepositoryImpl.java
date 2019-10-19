@@ -6,10 +6,17 @@
 package com.AnimalSaverV5.repository;
 
 import com.AnimalSaverV5.repository.entities.Users;
+
+import javax.xml.bind.DatatypeConverter;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+
+
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 
 /**
  *
@@ -26,6 +33,10 @@ public class JPAUserRepositoryImpl implements UserRepository{
         List<Users> users = entityManager.createNamedQuery("Users.findAll").getResultList();
         int i=users.size() + 1;
         Long l= new Long(i);
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        byte[] digest = md.digest(user.getPassword().getBytes(StandardCharsets.UTF_8));
+        String sha256 = DatatypeConverter.printHexBinary(digest).toLowerCase();
+        user.setPassword(sha256);
         user.setId(l);
         entityManager.persist(user);
     }

@@ -12,9 +12,11 @@ import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 
 /**
@@ -43,13 +45,33 @@ public class UserManagedBean implements Serializable {
         return null;
     }
     
-    public void addUser(Users user) {
-        System.out.println("user");
+    public boolean addUser(Users user) {
+//        List<Users> people = getAllUsers();
+        System.out.println("&&&&&&&&");
+        boolean exists = false;
+        boolean done = false;
+        for(Users people:getAllUsers())
+        {
+            System.out.println(people.getUsername());
+            if(user.getUsername().equals(people.getUsername()))
+            {
+                exists = true;
+                FacesContext context = FacesContext.getCurrentInstance();
+                FacesMessage message = new FacesMessage("Username exists");
+                message.setSeverity(FacesMessage.SEVERITY_ERROR);
+                context.addMessage(null, message);
+            }
+        }
         try{
-            userRepository.addUsers(user);
+            System.out.println(exists);
+            if(exists == false) {                
+                userRepository.addUsers(user);
+                done = true;
+            }
         } catch(Exception e) {
             System.out.println(e);
         }
+        return done;
     }
     public void editUser(Users user) {
         try {

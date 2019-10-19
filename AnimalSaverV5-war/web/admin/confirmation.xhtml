@@ -20,15 +20,12 @@ and open the template in the editor.
         <ui:insert name="header" >
             <ui:include src="template/common/commonNavbar.xhtml" />
         </ui:insert>
-        <div>
+        <div class="container-fluid">
             The user details are saved.
             <h:outputText value="username"/>
             ${addStaffBean.userName}
             <h:outputText value="usertype"/>
             ${addStaffBean.userType}
-            
-            
-            
         </div>
     </body>
 </html>
