@@ -26,11 +26,11 @@ and open the template in the editor.
         
         <h:form id="StaffForm">
             <div>
-                <table class="table" style="width:20px">
+                <table class="table hidden" style="width:20px">
                     <tr>
                         <td>
                             <h:selectOneMenu value = "#{searchAnimal.animalState}" tabindex="7">
-                                <f:validator validatorId = "dropDownMenuValidator" />
+                                
                                 <f:selectItem itemValue = "#" itemLabel = "Please select a state" />                                 
                                 <f:selectItem itemValue = "Queensland" itemLabel = "Queensland" /> 
                                 <f:selectItem itemValue = "Victoria" itemLabel = "Victoria" />
@@ -42,7 +42,7 @@ and open the template in the editor.
                         </td>
                         <td>
                             <h:selectOneMenu id="animalFamilyID" tabindex="11" value="#{searchAnimal.animalfam}">
-                                <f:validator validatorId = "dropDownMenuValidator" />
+                                
                                 <f:selectItem itemLabel="Please select a family." itemValue="#"
                                               noSelectionOption="true" />
                                 <f:selectItems value="#{animalManagedBean.allAnimalFamily}"
@@ -76,19 +76,19 @@ and open the template in the editor.
                         <h:outputLabel id="animalFamily" value="Animal Family"/>
                     </td>
                 </tr>
-                <ui:repeat value="#{animalApplication.animals}" id="StaffForm" var="animal" varStatus="status">
+                <ui:repeat value="#{animalApplication.animalsSecondFunction}" id="StaffForm" var="animal" varStatus="status">
                     <tr>
                         <td>
-                            <h:outputText value="#{animalApplication.animals.get(status.index).animalId}" id="animalId" />
+                            <h:outputText value="#{animalApplication.animalsSecondFunction.get(status.index).animalId}" id="animalId" />
                         </td>
                         <td>
-                            <h:outputText value="#{animalApplication.animals.get(status.index).animalName}" id="AnimalName"></h:outputText>
+                            <h:outputText value="#{animalApplication.animalsSecondFunction.get(status.index).animalName}" id="AnimalName"></h:outputText>
                         </td>
                         <td>
-                            <h:outputText value="#{animalApplication.animals.get(status.index).animalDesc}" id="AnimalDesc"></h:outputText>
+                            <h:outputText value="#{animalApplication.animalsSecondFunction.get(status.index).animalDesc}" id="AnimalDesc"></h:outputText>
                         </td>
                         <td>
-                            <h:outputText value="#{animalApplication.animals.get(status.index).animalFamily.animalFamilyDesc}" id="animalFamily"></h:outputText>
+                            <h:outputText value="#{animalApplication.animalsSecondFunction.get(status.index).animalFamily.animalFamilyDesc}" id="animalFamily"></h:outputText>
                         </td>
                         <td>
                             <h:commandLink value="View" action="viewAnimal.xhtml" >
