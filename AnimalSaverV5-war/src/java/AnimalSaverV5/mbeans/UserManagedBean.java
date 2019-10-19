@@ -75,6 +75,8 @@ public class UserManagedBean implements Serializable {
     }
     public void editUser(Users user) {
         try {
+            System.out.println("^^^^^^^^");
+            System.out.println(user.getUsertype());
             System.out.println(user);
             userRepository.editUsers(user);
         } catch(Exception e) {

@@ -12,8 +12,14 @@ and open the template in the editor.
     <h:head>
         <title>Edit user</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <ui:insert name="header" >
+            <ui:include src="template/common/commonHeader.xhtml" />
+        </ui:insert>
     </h:head>
     <h:body>
+        <ui:insert name="header" >
+            <ui:include src="template/common/commonNavbar.xhtml" />
+        </ui:insert>
         <div class="container">
             <div>Edit User</div>
             <h:form>
@@ -32,19 +38,24 @@ and open the template in the editor.
                     <tr>
                         <td width ="100" valign="top">User name </td>
                         <td valign="bottom">
-                            <h:inputText id = "username" value="#{userController.user.username}" required="true">
+                            <h:inputText id = "username" value="#{userController.user.username}" tabindex="1"
+                                         required="true">
                             </h:inputText>
                         </td>
                     </tr>
                     <tr>
                         <td width ="100" valign="top">User type </td>
                         <td valign="bottom">
-                            <h:inputText id = "usertype" value="#{userController.user.usertype}" required="true">
-                            </h:inputText>
+                            <h:selectOneMenu value = "#{userController.user.usertype}" tabindex="2">
+                                <f:validator validatorId = "dropDownMenuValidator" />
+                                <f:selectItem itemValue = "#" itemLabel = "Please select a usertype" />
+                                <f:selectItem itemValue = "admin" itemLabel = "Admin" />
+                                <f:selectItem itemValue = "staff" itemLabel = "Staff" />
+                            </h:selectOneMenu>
                         </td>
                     </tr>
                 </table>
-                <h:commandButton id="save" value="Save" action="#{userManagedBean.editUser(userController.user)}">
+                <h:commandButton id="save" value="Save" action="#{userManagedBean.editUser(userController.user)}" class="btn btn-primary">
                     <f:param name="userId" value="#{userController.user.id}"/>
                 </h:commandButton>
             </h:form>

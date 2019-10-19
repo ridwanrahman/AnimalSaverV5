@@ -8,6 +8,7 @@ package AnimalSaverV5.controllers;
 import AnimalSaverV5.mbeans.AnimalManagedBean;
 import javax.el.ELContext;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
@@ -107,15 +108,18 @@ public class SearchAnimal {
     }
     
     public void searchAnimalByCombination(String state, String fam) {
-        int result = Integer.parseInt(fam);			
-        try {
-            app.searchAnimalByFamilyId(result, state);
-        } catch (Exception e) {
-            System.out.println(e);
+        if (state.equals("#") || fam.equals("#"))
+        {
+            System.out.println("hererererere");
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("You didn't search properly"));
         }
-        
+        else {
+            int result = Integer.parseInt(fam);
+            try {
+                app.searchAnimalByFamilyId(result, state);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
     }
-    
-    
-    
 }

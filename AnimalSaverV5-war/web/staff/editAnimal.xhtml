@@ -71,9 +71,18 @@ and open the template in the editor.
                         </td>
                     </tr>
                     <tr>
-                        <td width ="100" valign="top">state</td>
+                        <td width ="100" valign="top">State</td>
                         <td valign="bottom">
-                            <h:inputText id = "state" value="#{animalController.animal.location.state}" binding="#{state}" required="true"></h:inputText>
+                            <h:selectOneMenu value = "#{animalController.animal.location.state}" tabindex="7">
+                                <f:validator validatorId = "dropDownMenuValidator" />
+                                <f:selectItem itemValue = "#" itemLabel = "Please select a state" />
+                                <f:selectItem itemValue = "Queensland" itemLabel = "Queensland" />
+                                <f:selectItem itemValue = "Victoria" itemLabel = "Victoria" />
+                                <f:selectItem itemValue = "New South Wales" itemLabel = "New South Wales" />
+                                <f:selectItem itemValue = "South Australia" itemLabel = "South Australia" />
+                                <f:selectItem itemValue = "Tasmania" itemLabel = "Tasmania" />
+                                <f:selectItem itemValue = "Western Australia" itemLabel = "Western Australia" />
+                            </h:selectOneMenu>
                         </td>
                     </tr>
                     <tr>
