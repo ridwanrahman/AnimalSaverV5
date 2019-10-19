@@ -29,7 +29,8 @@ and open the template in the editor.
                     <tr>
                         <td width ="150" valign="top">Id:</td>
                         <td valign="bottom">
-                            <h:outputLabel id = "Id" >#{propertyController.property.propertyId}</h:outputLabel>    
+                            <!--<h:outputLabel id = "Id" >#{propertyController.property.propertyId}</h:outputLabel>--> 
+                            <h:outputLabel id="Id">#{animalController.animal.animalId}</h:outputLabel>
                         </td>
                     </tr>
                     
@@ -91,6 +92,18 @@ and open the template in the editor.
                         <td width ="100" valign="top">Suburb</td>
                         <td valign="bottom">
                             <h:inputText id = "suburb" value="#{animalController.animal.location.suburb}" binding="#{suburb}" required="true"></h:inputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="100" valign="top">Animal Family: </td>
+                        <td>
+                            <h:selectOneMenu id="animalFamily" value="#{animalController.animal.animalFamily.animalFamilyID}">
+                                <f:selectItem itemValue="#{null}" itemLabel="--select--" />
+                                <f:selectItems value="#{animalManagedBean.allAnimalFamily}" var="c" 
+                                              itemLabel="#{c.animalFamilyID} - #{c.animalFamilyDesc}"
+                                               itemValue="#{c.animalFamilyID}"></f:selectItems>
+                                
+                            </h:selectOneMenu>
                         </td>
                     </tr>
                 </table>

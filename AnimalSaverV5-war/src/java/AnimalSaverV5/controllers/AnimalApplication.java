@@ -50,7 +50,12 @@ public class AnimalApplication {
     }
 
     public ArrayList<Animal> getAnimals() {
-//        refeshList();
+        //refeshList();
+        return this.animals;
+    }
+    
+    public ArrayList<Animal> getAnimalsSecondFunction() {
+        refeshList();
         return this.animals;
     }
 
