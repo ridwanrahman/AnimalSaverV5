@@ -9,6 +9,7 @@ import AnimalSaverV5.mbeans.AnimalManagedBean;
 import java.io.Serializable;
 import javax.el.ELContext;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -50,6 +51,7 @@ public class AddAnimalFamiy implements Serializable{
     public void addAnimalFamily(AnimalFamily unconvertedAnimalFamily) {
         try {
             animalManagedBean.addAnimalFamily(unconvertedAnimalFamily);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Animal family has been saved successfully"));
         } catch(Exception e) {
             System.out.println(e);
         }

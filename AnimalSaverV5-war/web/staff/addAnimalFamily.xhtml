@@ -19,38 +19,48 @@ and open the template in the editor.
         <ui:insert name="header" >
             <ui:include src="template/common/commonNavbar.xhtml" />
         </ui:insert>
-        <h1>Add animal family page.</h1>
-        <f:view>
-            <h:form>
-                <table class="table table-bordered ">
-                    <tr>
-                        <td width ="200">
-                            <h:outputLabel value="Name of animal family" for="animalFamilyName" />
-                        </td>
-                        <td>
-                            <h:inputText id="animalFamilyName" value="#{animalFamily.animalFamilyName}" title="animalFamilyName">
-                            </h:inputText>                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width ="200">
-                            <h:outputLabel value="Description of animal family" for="animalFamilyDesc" />
-                        </td>
-                        <td>
-                            <h:inputText id="animalFamilyDesc" value="#{animalFamily.animalFamilyDesc}"
-                                         title="animalFamilyDesc">
-                            </h:inputText>
-                        </td>
-                    </tr>
-                </table>
-                <h:commandButton id="submit" value="Submit" action="#{addAnimalFamily.addAnimalFamily(animalFamily)}" class="btn btn-primary">
-                </h:commandButton>
-            </h:form>
-        </f:view>
+        <div class="container-fluid">
+            
+            <h1>Add animal family</h1>
+            <f:view>
+                <h:form>
+                    <table class="table table-bordered ">
+                        <tr>
+                            <td width ="200">
+                                <h:outputLabel value="Name of animal family" for="animalFamilyDesc" />
+                            </td>
+                            <td>
+                                <h:inputText id="animalFamilyDesc" value="#{animalFamily.animalFamilyDesc}"
+                                             tabindex="1" title="animalFamilyDesc">
+                                    <f:validateRegex pattern="[a-z A-Z]+"/>
+                                </h:inputText>
+                                <h:message for="animalFamilyDesc" style = "color:red"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width ="200">
+                                <h:outputLabel value="Description of animal family" for="animalFamilyName" />
+                            </td>
+                            <td>
+                                <h:inputText id="animalFamilyName" value="#{animalFamily.animalFamilyName}" title="animalFamilyName"
+                                             tabindex="2">
+                                    <f:validateRegex pattern="[a-z A-Z]+"/>
+                                </h:inputText>        
+                                <h:message for="animalFamilyName" style = "color:red"/>
+                            </td>
+                        </tr>
+                        
+                    </table>
+                    <h:commandButton id="submit" value="Submit" action="#{addAnimalFamily.addAnimalFamily(animalFamily)}" class="btn btn-primary">
+                        </h:commandButton>
+                </h:form>
+            </f:view>
         
+        <hr></hr>
         <!--Footer-->
         <ui:insert name="footer" >
             <ui:include src="template/common/commonFooter.xhtml" />
         </ui:insert>
+        </div>
     </h:body>
 </html>
