@@ -29,7 +29,7 @@ public class ContactUsApplication {
     private ArrayList<Contact> contactUsPeople;
 
     public ContactUsApplication() {
-        System.out.println("jjjjjj");
+//        System.out.println("jjjjjj");
         contactUsPeople = new ArrayList<>();
         
         ELContext elContext = FacesContext.getCurrentInstance().getELContext();
@@ -56,7 +56,7 @@ public class ContactUsApplication {
                 contactUsPeople.add(c);
             }
             
-            System.out.println(contactUsPeople);
+//            System.out.println(contactUsPeople);
             setContactUsPeople(contactUsPeople);
         }
     }

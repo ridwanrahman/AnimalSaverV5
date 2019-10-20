@@ -47,7 +47,7 @@ public class UserManagedBean implements Serializable {
     
     public boolean addUser(Users user) {
 //        List<Users> people = getAllUsers();
-        System.out.println("&&&&&&&&");
+//        System.out.println("&&&&&&&&");
         boolean exists = false;
         boolean done = false;
         for(Users people:getAllUsers())
@@ -75,9 +75,9 @@ public class UserManagedBean implements Serializable {
     }
     public void editUser(Users user) {
         try {
-            System.out.println("^^^^^^^^");
-            System.out.println(user.getUsertype());
-            System.out.println(user);
+//            System.out.println("^^^^^^^^");
+//            System.out.println(user.getUsertype());
+//            System.out.println(user);
             userRepository.editUsers(user);
         } catch(Exception e) {
             System.out.println(e);

@@ -77,19 +77,14 @@ public class AnimalApplication {
     }
     
     public void searchAnimalByFamilyId(int id, String state) throws Exception {
-        System.out.println("this function called");
         this.updateAnimalList();
         ArrayList<Animal> newList = new ArrayList<>(animals);
         animals2.clear();
-        System.out.println(id);
-        System.out.println(state);
-        System.out.println("**********");
-        System.out.println("animals size "+animals.size());
         for(Animal ani: newList)
         {
             if(ani.getAnimalFamily().getAnimalFamilyID() == id && ani.getLocation().getState().equals(state))
             {
-                System.out.println(ani.getAnimalName());
+//                System.out.println(ani.getAnimalName());
                 animals2.add(ani);
             }
         }

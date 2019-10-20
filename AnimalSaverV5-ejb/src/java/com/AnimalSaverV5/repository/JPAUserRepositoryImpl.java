@@ -43,7 +43,7 @@ public class JPAUserRepositoryImpl implements UserRepository{
 
     @Override
     public List<Users> getAllUsers() throws Exception {
-        System.out.println("herere");
+//        System.out.println("herere");
         return entityManager.createNamedQuery("Users.findAll").getResultList();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

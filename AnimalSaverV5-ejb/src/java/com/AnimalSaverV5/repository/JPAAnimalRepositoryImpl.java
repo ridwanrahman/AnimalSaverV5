@@ -26,7 +26,7 @@ public class JPAAnimalRepositoryImpl implements AnimalRepository{
     public void addAnimal(Animal animal) throws Exception {
         System.out.println("****saving animal to database****");
         List<Animal> animals = entityManager.createNamedQuery(Animal.GET_ALL_QUERY_NAME).getResultList();
-        System.out.println(animals.get(0).getAnimalId() + 1);
+//        System.out.println(animals.get(0).getAnimalId() + 1);
         animal.setAnimalId(animals.get(0).getAnimalId() + 1);
         entityManager.persist(animal);
     }
@@ -36,7 +36,7 @@ public class JPAAnimalRepositoryImpl implements AnimalRepository{
         System.out.println("Search animal by id");
         Animal animal = entityManager.find(Animal.class, id);
         animal.getTags();
-        System.out.println(animal);
+//        System.out.println(animal);
         return animal;
     }
 
@@ -55,7 +55,7 @@ public class JPAAnimalRepositoryImpl implements AnimalRepository{
         System.out.println("Remove animal ejb");
         Animal animal = this.searchAnimalById(animalId);
         if(animal != null) {
-            System.out.println("removing animal");
+//            System.out.println("removing animal");
             entityManager.remove(animal);
         }
     }
@@ -88,7 +88,7 @@ public class JPAAnimalRepositoryImpl implements AnimalRepository{
     @Override
     public Animal searchAnimalByFamilyId(int id) throws Exception {
         System.out.println("inside ejb");
-        System.out.println(id);
+//        System.out.println(id);
         AnimalFamily animalFamily = entityManager.find(AnimalFamily.class, id);
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

@@ -43,7 +43,7 @@ public class RemoveUser {
     
     public void removeUser(int id) {
         try {
-            System.out.println(id);
+//            System.out.println(id);
             userManagedBean.removeUser(id);
         } catch(Exception e) {
             System.out.println(e);

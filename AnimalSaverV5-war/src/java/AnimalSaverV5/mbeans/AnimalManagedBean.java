@@ -48,7 +48,7 @@ public class AnimalManagedBean implements Serializable{
     public List<com.AnimalSaverV5.repository.entities.AnimalFamily> getAllAnimalFamily() {
         try {
             List<AnimalFamily> animalFamilys = animalRepository.getAllAnimalFamily();
-            System.out.println(animalFamilys);
+//            System.out.println(animalFamilys);
             return animalFamilys;
         } catch(Exception e) {
             System.out.println(e);
@@ -58,8 +58,8 @@ public class AnimalManagedBean implements Serializable{
     
     public void addAnimal(AnimalSaverV5.controllers.Animal unconvertedAnimal) {
         Animal animal = convertToAnimal(unconvertedAnimal);
-        System.out.println(animal);
-        System.out.println("saving");
+//        System.out.println(animal);
+//        System.out.println("saving");
         try {
             animalRepository.addAnimal(animal);
         } catch(Exception e) {
@@ -131,7 +131,7 @@ public class AnimalManagedBean implements Serializable{
         try {
             AnimalFamily animalFamily = convertToAnimalFamily(ani);
             try {
-                System.out.println("sending data to ejb");
+//                System.out.println("sending data to ejb");
                 animmalFamilyRepository.addAnimalFamily(animalFamily);
             } catch (Exception e) {
                 System.out.println(e);

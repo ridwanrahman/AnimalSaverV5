@@ -40,15 +40,15 @@ public class EmailValidator implements Validator {
 
     @Override
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
-        System.out.println("hererer");
+//        System.out.println("hererer");
         StringBuilder url = new StringBuilder();
         String urlValue = value.toString();
         if (urlValidator(urlValue)) {
-            System.out.print("The URL " + url + " is valid");
+//            System.out.print("The URL " + url + " is valid");
 //            context = FacesContext.getCurrentInstance();
 //            context.addMessage(component.getClientId(), new FacesMessage("URL is fine"));
         } else {
-            System.out.print("The URL " + url + " isn't valid");
+//            System.out.print("The URL " + url + " isn't valid");
             context = FacesContext.getCurrentInstance();
             FacesMessage msg = new FacesMessage("URL validation failed","Invalid URL format");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);

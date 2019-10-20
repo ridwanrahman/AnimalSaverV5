@@ -50,7 +50,6 @@ public class AddAnimal {
     
     public void addAnimal(Animal unconvertedAnimal) {
         try {
-            System.out.println("in add animal controller");
             animalManagedBean.addAnimal(unconvertedAnimal);
             app.updateAnimalList();
             app.refeshList();

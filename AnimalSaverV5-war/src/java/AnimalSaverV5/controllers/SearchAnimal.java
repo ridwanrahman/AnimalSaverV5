@@ -110,7 +110,7 @@ public class SearchAnimal {
     public void searchAnimalByCombination(String state, String fam) {
         if (state.equals("#") || fam.equals("#"))
         {
-            System.out.println("hererererere");
+//            System.out.println("hererererere");
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("You didn't search properly"));
         }
         else {
