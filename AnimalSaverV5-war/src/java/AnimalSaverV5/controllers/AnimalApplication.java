@@ -50,12 +50,13 @@ public class AnimalApplication {
     }
 
     public ArrayList<Animal> getAnimals() {
-        //refeshList();
+        refeshList();
         return this.animals;
     }
     
     public ArrayList<Animal> getAnimalsSecondFunction() {
-        refeshList();
+//        refeshList();
+//        System.out.println("herere");
         return this.animals;
     }
 
@@ -77,17 +78,48 @@ public class AnimalApplication {
     }
     
     public void searchAnimalByFamilyId(int id, String state) throws Exception {
+        System.out.println(id);
+        System.out.println(state);
         this.updateAnimalList();
-        ArrayList<Animal> newList = new ArrayList<>(animals);
+        ArrayList<Animal> newList = new ArrayList<>(animals);   
+        animals.clear();
         animals2.clear();
+//        System.out.println(newList);
         for(Animal ani: newList)
         {
-            if(ani.getAnimalFamily().getAnimalFamilyID() == id && ani.getLocation().getState().equals(state))
+            
+            if(ani.getAnimalFamily() == null && ani.getLocation() == null) 
             {
+//                System.out.println("null famly");
+            }
+            else if (ani.getAnimalFamily() != null && ani.getLocation() != null)
+            {
+//                System.out.println("***");
 //                System.out.println(ani.getAnimalName());
-                animals2.add(ani);
+//                System.out.println(ani.getAnimalFamily().getAnimalFamilyID());
+//                System.out.println(ani.getLocation().getState());
+//                System.out.println("***");
+                if(ani.getAnimalFamily().getAnimalFamilyID() == id && ani.getLocation().getState().equals(state))
+                {
+                    System.out.println("***");
+                    System.out.println(ani.getAnimalName());
+                    animals2.add(ani);
+                    System.out.println("***");
+                }
+                //find location not nulls
+            }
+            else
+            {
+                
             }
         }
+        System.out.println("qqq");
+        for(Animal i:animals2)
+        {
+            System.out.println(i.getAnimalName());
+        }
+        System.out.println("qqq");
+        
 //        animals.clear();
         setAnimals(animals2);
     }

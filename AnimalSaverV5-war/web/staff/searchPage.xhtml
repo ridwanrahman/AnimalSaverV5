@@ -74,7 +74,7 @@ and open the template in the editor.
                         <h:outputLabel id="animalFamily" value="Animal Family"/>
                     </td>
                 </tr>
-                <ui:repeat value="#{animalApplication.animals}" id="StaffForm" var="animal" varStatus="status">
+                <ui:repeat value="#{animalApplication.animalsSecondFunction}" id="StaffForm" var="animal" varStatus="status">
                     <tr>
                         <td>
                             <h:outputText value="#{animalApplication.animals.get(status.index).animalId}" id="animalId" />

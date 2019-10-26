@@ -9,3 +9,12 @@ select * from animal_family;
 
 insert into animal values(1,'brown','This animal is usually seen around caulfield','image','Dingo','https://www.wikipedia.com','3160','Victoria','32','12','caulfield');
 insert into animal values(2,'white','saw this in malvern','image','cat','https://www.wikipedia.com','3145','Victoria','32','12','caulfield');
+
+
+-- SHA-256 hash value for 'admin' password
+insert into USERS values(
+NEXT VALUE FOR USERS_SEQ,
+'admin',
+'8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918',
+'admin'
+); 

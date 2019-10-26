@@ -108,6 +108,7 @@ public class SearchAnimal {
     }
     
     public void searchAnimalByCombination(String state, String fam) {
+        
         if (state.equals("#") || fam.equals("#"))
         {
 //            System.out.println("hererererere");
@@ -116,6 +117,7 @@ public class SearchAnimal {
         else {
             int result = Integer.parseInt(fam);
             try {
+                System.out.println("iiiiiii");
                 app.searchAnimalByFamilyId(result, state);
             } catch (Exception e) {
                 System.out.println(e);

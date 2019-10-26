@@ -1,0 +1,23 @@
+-----------------SETUP APPLICATION JAVA EE APP--------------------
+1. Load up the project in netbeans
+2. Create a new server (Make sure it is glassfish 4.0)
+3. Make sure to include shared project in EJB
+4. Make sure to include both shared and EJB in war project
+5. Include Java 7 API in shared project
+6. Create a database for the project
+7. Create connection pool
+8. Create resource pool
+9. Create persistence unit
+10. Run the sql script to load up the right data in the database (do not run the whole script together)
+11. Run the war file
+
+------------------SETUP SPRING BOOT APP----------------------------
+1. Open the project in IDE
+2. Run the project
+
+
+-------------------SETUP ANGULAR APP--------------------
+1. Open the folder
+2. Run nom install
+3. If all packages are installed correctly, run ng serve
+
